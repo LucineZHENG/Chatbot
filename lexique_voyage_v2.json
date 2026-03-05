@@ -1,0 +1,3793 @@
+{
+  "_meta": {
+    "projet": "VoyageAssistant",
+    "description": "Lexique actif multilingue — système conversationnel de réservation de vols",
+    "langue_base": "français",
+    "langues_supportees": [
+      "fr",
+      "en",
+      "zh"
+    ],
+    "version": "2.0",
+    "sources": [
+      "flights_database_v2.json (60 villes, 15 compagnies, 300 vols)",
+      "airtalk_600_multilingual_fixed.json (600 énoncés EN/FR/ZH)"
+    ],
+    "changelog": "v2.0 : ajout slots retour (return_day/date/month/time), passenger_count, intents correction_slot / demande_clarification / out_of_scope, multi_slots_patterns, prompt_guidelines_etape4, enrichissement exemples multi-slots"
+  },
+  "villes": {
+    "Atlanta": {
+      "iata": "ATL",
+      "pays": "USA",
+      "aliases_en": [
+        "atl",
+        "hartsfield"
+      ],
+      "aliases_fr": [
+        "atl",
+        "hartsfield"
+      ],
+      "aliases_zh": [
+        "亚特兰大"
+      ]
+    },
+    "Baltimore": {
+      "iata": "BWI",
+      "pays": "USA",
+      "aliases_en": [
+        "bwi",
+        "balt"
+      ],
+      "aliases_fr": [
+        "bwi",
+        "balt"
+      ],
+      "aliases_zh": [
+        "巴尔的摩"
+      ]
+    },
+    "Boston": {
+      "iata": "BOS",
+      "pays": "USA",
+      "aliases_en": [
+        "bos",
+        "logan"
+      ],
+      "aliases_fr": [
+        "bos",
+        "logan"
+      ],
+      "aliases_zh": [
+        "波士顿"
+      ]
+    },
+    "Charlotte": {
+      "iata": "CLT",
+      "pays": "USA",
+      "aliases_en": [
+        "clt"
+      ],
+      "aliases_fr": [
+        "clt"
+      ],
+      "aliases_zh": [
+        "夏洛特"
+      ]
+    },
+    "Chicago": {
+      "iata": "ORD",
+      "pays": "USA",
+      "aliases_en": [
+        "ord",
+        "chi",
+        "o'hare",
+        "ohare"
+      ],
+      "aliases_fr": [
+        "ord",
+        "chi",
+        "o'hare",
+        "ohare"
+      ],
+      "aliases_zh": [
+        "芝加哥"
+      ]
+    },
+    "Cincinnati": {
+      "iata": "CVG",
+      "pays": "USA",
+      "aliases_en": [
+        "cvg"
+      ],
+      "aliases_fr": [
+        "cvg"
+      ],
+      "aliases_zh": [
+        "辛辛那提"
+      ]
+    },
+    "Cleveland": {
+      "iata": "CLE",
+      "pays": "USA",
+      "aliases_en": [
+        "cle"
+      ],
+      "aliases_fr": [
+        "cle"
+      ],
+      "aliases_zh": [
+        "克利夫兰"
+      ]
+    },
+    "Columbus": {
+      "iata": "CMH",
+      "pays": "USA",
+      "aliases_en": [
+        "cmh"
+      ],
+      "aliases_fr": [
+        "cmh"
+      ],
+      "aliases_zh": [
+        "哥伦布"
+      ]
+    },
+    "Dallas": {
+      "iata": "DAL",
+      "pays": "USA",
+      "aliases_en": [
+        "dal",
+        "love field"
+      ],
+      "aliases_fr": [
+        "dal",
+        "love field"
+      ],
+      "aliases_zh": [
+        "达拉斯"
+      ]
+    },
+    "Dallas Fort Worth": {
+      "iata": "DFW",
+      "pays": "USA",
+      "aliases_en": [
+        "dfw",
+        "dfw airport",
+        "dallas-fort worth"
+      ],
+      "aliases_fr": [
+        "dfw",
+        "dfw airport",
+        "dallas-fort worth"
+      ],
+      "aliases_zh": [
+        "达拉斯沃斯堡",
+        "达拉斯-沃斯堡"
+      ]
+    },
+    "Denver": {
+      "iata": "DEN",
+      "pays": "USA",
+      "aliases_en": [
+        "den"
+      ],
+      "aliases_fr": [
+        "den"
+      ],
+      "aliases_zh": [
+        "丹佛"
+      ]
+    },
+    "Detroit": {
+      "iata": "DTW",
+      "pays": "USA",
+      "aliases_en": [
+        "dtw"
+      ],
+      "aliases_fr": [
+        "dtw"
+      ],
+      "aliases_zh": [
+        "底特律"
+      ]
+    },
+    "Fort Worth": {
+      "iata": "FTW",
+      "pays": "USA",
+      "aliases_en": [
+        "ftw"
+      ],
+      "aliases_fr": [
+        "ftw"
+      ],
+      "aliases_zh": [
+        "沃斯堡"
+      ]
+    },
+    "Houston": {
+      "iata": "IAH",
+      "pays": "USA",
+      "aliases_en": [
+        "iah",
+        "bush intercontinental"
+      ],
+      "aliases_fr": [
+        "iah",
+        "bush intercontinental"
+      ],
+      "aliases_zh": [
+        "休斯顿"
+      ]
+    },
+    "Indianapolis": {
+      "iata": "IND",
+      "pays": "USA",
+      "aliases_en": [
+        "ind"
+      ],
+      "aliases_fr": [
+        "ind"
+      ],
+      "aliases_zh": [
+        "印第安纳波利斯"
+      ]
+    },
+    "Kansas City": {
+      "iata": "MCI",
+      "pays": "USA",
+      "aliases_en": [
+        "mci",
+        "kc"
+      ],
+      "aliases_fr": [
+        "mci",
+        "kc"
+      ],
+      "aliases_zh": [
+        "堪萨斯城"
+      ]
+    },
+    "Los Angeles": {
+      "iata": "LAX",
+      "pays": "USA",
+      "aliases_en": [
+        "lax",
+        "la",
+        "l.a.",
+        "los angeles international"
+      ],
+      "aliases_fr": [
+        "lax",
+        "la",
+        "l.a.",
+        "los angeles international"
+      ],
+      "aliases_zh": [
+        "洛杉矶"
+      ]
+    },
+    "Las Vegas": {
+      "iata": "LAS",
+      "pays": "USA",
+      "aliases_en": [
+        "las",
+        "vegas",
+        "mccarran"
+      ],
+      "aliases_fr": [
+        "las",
+        "vegas",
+        "mccarran"
+      ],
+      "aliases_zh": [
+        "拉斯维加斯"
+      ]
+    },
+    "Miami": {
+      "iata": "MIA",
+      "pays": "USA",
+      "aliases_en": [
+        "mia"
+      ],
+      "aliases_fr": [
+        "mia"
+      ],
+      "aliases_zh": [
+        "迈阿密"
+      ]
+    },
+    "Milwaukee": {
+      "iata": "MKE",
+      "pays": "USA",
+      "aliases_en": [
+        "mke"
+      ],
+      "aliases_fr": [
+        "mke"
+      ],
+      "aliases_zh": [
+        "密尔沃基"
+      ]
+    },
+    "Minneapolis": {
+      "iata": "MSP",
+      "pays": "USA",
+      "aliases_en": [
+        "msp",
+        "minneapolis-saint paul"
+      ],
+      "aliases_fr": [
+        "msp",
+        "minneapolis-saint paul"
+      ],
+      "aliases_zh": [
+        "明尼阿波利斯"
+      ]
+    },
+    "Nashville": {
+      "iata": "BNA",
+      "pays": "USA",
+      "aliases_en": [
+        "bna"
+      ],
+      "aliases_fr": [
+        "bna"
+      ],
+      "aliases_zh": [
+        "纳什维尔"
+      ]
+    },
+    "New York": {
+      "iata": "NYC",
+      "pays": "USA",
+      "aliases_en": [
+        "nyc",
+        "new york city",
+        "ny",
+        "jfk",
+        "lga",
+        "ewr"
+      ],
+      "aliases_fr": [
+        "nyc",
+        "new york city",
+        "ny",
+        "jfk",
+        "lga",
+        "ewr"
+      ],
+      "aliases_zh": [
+        "纽约",
+        "纽约市"
+      ]
+    },
+    "Newark": {
+      "iata": "EWR",
+      "pays": "USA",
+      "aliases_en": [
+        "ewr"
+      ],
+      "aliases_fr": [
+        "ewr"
+      ],
+      "aliases_zh": [
+        "纽瓦克"
+      ]
+    },
+    "Oakland": {
+      "iata": "OAK",
+      "pays": "USA",
+      "aliases_en": [
+        "oak"
+      ],
+      "aliases_fr": [
+        "oak"
+      ],
+      "aliases_zh": [
+        "奥克兰"
+      ]
+    },
+    "Ontario": {
+      "iata": "ONT",
+      "pays": "USA",
+      "aliases_en": [
+        "ont"
+      ],
+      "aliases_fr": [
+        "ont"
+      ],
+      "aliases_zh": [
+        "安大略"
+      ]
+    },
+    "Orlando": {
+      "iata": "MCO",
+      "pays": "USA",
+      "aliases_en": [
+        "mco",
+        "disney"
+      ],
+      "aliases_fr": [
+        "mco",
+        "disney"
+      ],
+      "aliases_zh": [
+        "奥兰多"
+      ]
+    },
+    "Philadelphia": {
+      "iata": "PHL",
+      "pays": "USA",
+      "aliases_en": [
+        "phl",
+        "philly"
+      ],
+      "aliases_fr": [
+        "phl",
+        "philly"
+      ],
+      "aliases_zh": [
+        "费城",
+        "费拉德尔菲亚"
+      ]
+    },
+    "Phoenix": {
+      "iata": "PHX",
+      "pays": "USA",
+      "aliases_en": [
+        "phx",
+        "sky harbor"
+      ],
+      "aliases_fr": [
+        "phx",
+        "sky harbor"
+      ],
+      "aliases_zh": [
+        "菲尼克斯"
+      ]
+    },
+    "Pittsburgh": {
+      "iata": "PIT",
+      "pays": "USA",
+      "aliases_en": [
+        "pit"
+      ],
+      "aliases_fr": [
+        "pit"
+      ],
+      "aliases_zh": [
+        "匹兹堡"
+      ]
+    },
+    "Salt Lake City": {
+      "iata": "SLC",
+      "pays": "USA",
+      "aliases_en": [
+        "slc",
+        "salt lake"
+      ],
+      "aliases_fr": [
+        "slc",
+        "salt lake"
+      ],
+      "aliases_zh": [
+        "盐湖城"
+      ]
+    },
+    "San Diego": {
+      "iata": "SAN",
+      "pays": "USA",
+      "aliases_en": [
+        "san"
+      ],
+      "aliases_fr": [
+        "san"
+      ],
+      "aliases_zh": [
+        "圣地亚哥"
+      ]
+    },
+    "San Francisco": {
+      "iata": "SFO",
+      "pays": "USA",
+      "aliases_en": [
+        "sfo",
+        "sf"
+      ],
+      "aliases_fr": [
+        "sfo",
+        "sf"
+      ],
+      "aliases_zh": [
+        "旧金山"
+      ]
+    },
+    "San Jose": {
+      "iata": "SJC",
+      "pays": "USA",
+      "aliases_en": [
+        "sjc"
+      ],
+      "aliases_fr": [
+        "sjc"
+      ],
+      "aliases_zh": [
+        "圣何塞"
+      ]
+    },
+    "Seattle": {
+      "iata": "SEA",
+      "pays": "USA",
+      "aliases_en": [
+        "sea",
+        "seattle-tacoma",
+        "seatac"
+      ],
+      "aliases_fr": [
+        "sea",
+        "seattle-tacoma",
+        "seatac"
+      ],
+      "aliases_zh": [
+        "西雅图"
+      ]
+    },
+    "Tacoma": {
+      "iata": "GEG",
+      "pays": "USA",
+      "aliases_en": [
+        "geg"
+      ],
+      "aliases_fr": [
+        "geg"
+      ],
+      "aliases_zh": [
+        "塔科马"
+      ]
+    },
+    "Tampa": {
+      "iata": "TPA",
+      "pays": "USA",
+      "aliases_en": [
+        "tpa"
+      ],
+      "aliases_fr": [
+        "tpa"
+      ],
+      "aliases_zh": [
+        "坦帕"
+      ]
+    },
+    "Washington": {
+      "iata": "DCA",
+      "pays": "USA",
+      "aliases_en": [
+        "dca",
+        "reagan",
+        "dulles",
+        "iad",
+        "dc"
+      ],
+      "aliases_fr": [
+        "dca",
+        "reagan",
+        "dulles",
+        "iad",
+        "dc"
+      ],
+      "aliases_zh": [
+        "华盛顿",
+        "华盛顿特区"
+      ]
+    },
+    "Westchester County": {
+      "iata": "HPN",
+      "pays": "USA",
+      "aliases_en": [
+        "hpn",
+        "white plains"
+      ],
+      "aliases_fr": [
+        "hpn",
+        "white plains"
+      ],
+      "aliases_zh": [
+        "威彻斯特县"
+      ]
+    },
+    "Montreal": {
+      "iata": "YUL",
+      "pays": "Canada",
+      "aliases_en": [
+        "yul",
+        "trudeau"
+      ],
+      "aliases_fr": [
+        "yul",
+        "trudeau"
+      ],
+      "aliases_zh": [
+        "蒙特利尔"
+      ]
+    },
+    "Toronto": {
+      "iata": "YYZ",
+      "pays": "Canada",
+      "aliases_en": [
+        "yyz",
+        "pearson"
+      ],
+      "aliases_fr": [
+        "yyz",
+        "pearson"
+      ],
+      "aliases_zh": [
+        "多伦多"
+      ]
+    },
+    "London": {
+      "iata": "LHR",
+      "pays": "UK",
+      "aliases_en": [
+        "lhr",
+        "heathrow",
+        "london heathrow"
+      ],
+      "aliases_fr": [
+        "lhr",
+        "heathrow",
+        "london heathrow"
+      ],
+      "aliases_zh": [
+        "伦敦"
+      ]
+    },
+    "Paris": {
+      "iata": "CDG",
+      "pays": "France",
+      "aliases_en": [
+        "cdg",
+        "charles de gaulle",
+        "paris cdg"
+      ],
+      "aliases_fr": [
+        "cdg",
+        "charles de gaulle",
+        "paris cdg"
+      ],
+      "aliases_zh": [
+        "巴黎"
+      ]
+    },
+    "Amsterdam": {
+      "iata": "AMS",
+      "pays": "Netherlands",
+      "aliases_en": [
+        "ams",
+        "schiphol"
+      ],
+      "aliases_fr": [
+        "ams",
+        "schiphol"
+      ],
+      "aliases_zh": [
+        "阿姆斯特丹"
+      ]
+    },
+    "Frankfurt": {
+      "iata": "FRA",
+      "pays": "Germany",
+      "aliases_en": [
+        "fra"
+      ],
+      "aliases_fr": [
+        "fra"
+      ],
+      "aliases_zh": [
+        "法兰克福"
+      ]
+    },
+    "Madrid": {
+      "iata": "MAD",
+      "pays": "Spain",
+      "aliases_en": [
+        "mad",
+        "barajas"
+      ],
+      "aliases_fr": [
+        "mad",
+        "barajas"
+      ],
+      "aliases_zh": [
+        "马德里"
+      ]
+    },
+    "Rome": {
+      "iata": "FCO",
+      "pays": "Italy",
+      "aliases_en": [
+        "fco",
+        "fiumicino"
+      ],
+      "aliases_fr": [
+        "fco",
+        "fiumicino"
+      ],
+      "aliases_zh": [
+        "罗马"
+      ]
+    },
+    "Dubai": {
+      "iata": "DXB",
+      "pays": "UAE",
+      "aliases_en": [
+        "dxb"
+      ],
+      "aliases_fr": [
+        "dxb"
+      ],
+      "aliases_zh": [
+        "迪拜"
+      ]
+    },
+    "Tokyo": {
+      "iata": "NRT",
+      "pays": "Japan",
+      "aliases_en": [
+        "nrt",
+        "narita",
+        "hnd",
+        "haneda"
+      ],
+      "aliases_fr": [
+        "nrt",
+        "narita",
+        "hnd",
+        "haneda"
+      ],
+      "aliases_zh": [
+        "东京"
+      ]
+    },
+    "Beijing": {
+      "iata": "PEK",
+      "pays": "China",
+      "aliases_en": [
+        "pek",
+        "capital airport"
+      ],
+      "aliases_fr": [
+        "pek",
+        "capital airport"
+      ],
+      "aliases_zh": [
+        "北京"
+      ]
+    },
+    "Shanghai": {
+      "iata": "PVG",
+      "pays": "China",
+      "aliases_en": [
+        "pvg",
+        "pudong"
+      ],
+      "aliases_fr": [
+        "pvg",
+        "pudong"
+      ],
+      "aliases_zh": [
+        "上海"
+      ]
+    },
+    "Singapore": {
+      "iata": "SIN",
+      "pays": "Singapore",
+      "aliases_en": [
+        "sin",
+        "changi"
+      ],
+      "aliases_fr": [
+        "sin",
+        "changi"
+      ],
+      "aliases_zh": [
+        "新加坡"
+      ]
+    },
+    "Sydney": {
+      "iata": "SYD",
+      "pays": "Australia",
+      "aliases_en": [
+        "syd",
+        "kingsford smith"
+      ],
+      "aliases_fr": [
+        "syd",
+        "kingsford smith"
+      ],
+      "aliases_zh": [
+        "悉尼"
+      ]
+    },
+    "Mexico City": {
+      "iata": "MEX",
+      "pays": "Mexico",
+      "aliases_en": [
+        "mex",
+        "benito juarez"
+      ],
+      "aliases_fr": [
+        "mex",
+        "benito juarez"
+      ],
+      "aliases_zh": [
+        "墨西哥城"
+      ]
+    },
+    "São Paulo": {
+      "iata": "GRU",
+      "pays": "Brazil",
+      "aliases_en": [
+        "gru",
+        "guarulhos",
+        "sao paulo"
+      ],
+      "aliases_fr": [
+        "gru",
+        "guarulhos",
+        "sao paulo"
+      ],
+      "aliases_zh": [
+        "圣保罗"
+      ]
+    },
+    "Buenos Aires": {
+      "iata": "EZE",
+      "pays": "Argentina",
+      "aliases_en": [
+        "eze",
+        "ezeiza"
+      ],
+      "aliases_fr": [
+        "eze",
+        "ezeiza"
+      ],
+      "aliases_zh": [
+        "布宜诺斯艾利斯"
+      ]
+    },
+    "Johannesburg": {
+      "iata": "JNB",
+      "pays": "South Africa",
+      "aliases_en": [
+        "jnb",
+        "tambo"
+      ],
+      "aliases_fr": [
+        "jnb",
+        "tambo"
+      ],
+      "aliases_zh": [
+        "约翰内斯堡"
+      ]
+    },
+    "Mumbai": {
+      "iata": "BOM",
+      "pays": "India",
+      "aliases_en": [
+        "bom",
+        "bombay"
+      ],
+      "aliases_fr": [
+        "bom",
+        "bombay"
+      ],
+      "aliases_zh": [
+        "孟买"
+      ]
+    },
+    "Delhi": {
+      "iata": "DEL",
+      "pays": "India",
+      "aliases_en": [
+        "del",
+        "indira gandhi",
+        "new delhi"
+      ],
+      "aliases_fr": [
+        "del",
+        "indira gandhi",
+        "new delhi"
+      ],
+      "aliases_zh": [
+        "新德里",
+        "德里"
+      ]
+    },
+    "Seoul": {
+      "iata": "ICN",
+      "pays": "South Korea",
+      "aliases_en": [
+        "icn",
+        "incheon"
+      ],
+      "aliases_fr": [
+        "icn",
+        "incheon"
+      ],
+      "aliases_zh": [
+        "首尔"
+      ]
+    }
+  },
+  "compagnies_aeriennes": {
+    "American Airlines": {
+      "iata": "AA",
+      "pays": "USA",
+      "aliases_en": [
+        "american",
+        "aa",
+        "american air"
+      ],
+      "aliases_fr": [
+        "american",
+        "aa",
+        "american air"
+      ],
+      "aliases_zh": [
+        "美国航空",
+        "美航",
+        "美国"
+      ]
+    },
+    "Delta Air Lines": {
+      "iata": "DL",
+      "pays": "USA",
+      "aliases_en": [
+        "delta",
+        "delta airline",
+        "delta airlines",
+        "delta 's",
+        "dl"
+      ],
+      "aliases_fr": [
+        "delta",
+        "delta airline",
+        "delta airlines",
+        "delta 's",
+        "dl"
+      ],
+      "aliases_zh": [
+        "达美航空",
+        "达美"
+      ]
+    },
+    "United Airlines": {
+      "iata": "UA",
+      "pays": "USA",
+      "aliases_en": [
+        "united",
+        "ua",
+        "united air"
+      ],
+      "aliases_fr": [
+        "united",
+        "ua",
+        "united air"
+      ],
+      "aliases_zh": [
+        "联合航空",
+        "美联航"
+      ]
+    },
+    "US Airways": {
+      "iata": "US",
+      "pays": "USA",
+      "aliases_en": [
+        "us air",
+        "us airways",
+        "usair"
+      ],
+      "aliases_fr": [
+        "us air",
+        "us airways",
+        "usair"
+      ],
+      "aliases_zh": [
+        "全美航空",
+        "全美"
+      ]
+    },
+    "Continental Airlines": {
+      "iata": "CO",
+      "pays": "USA",
+      "aliases_en": [
+        "continental",
+        "continental airline",
+        "co"
+      ],
+      "aliases_fr": [
+        "continental",
+        "continental airline",
+        "co"
+      ],
+      "aliases_zh": [
+        "大陆航空"
+      ]
+    },
+    "Northwest Airlines": {
+      "iata": "NW",
+      "pays": "USA",
+      "aliases_en": [
+        "northwest",
+        "nw",
+        "northwest air"
+      ],
+      "aliases_fr": [
+        "northwest",
+        "nw",
+        "northwest air"
+      ],
+      "aliases_zh": [
+        "西北航空"
+      ]
+    },
+    "Canadian Airlines": {
+      "iata": "CP",
+      "pays": "Canada",
+      "aliases_en": [
+        "canadian",
+        "cp air"
+      ],
+      "aliases_fr": [
+        "canadian",
+        "cp air"
+      ],
+      "aliases_zh": [
+        "加拿大航空"
+      ]
+    },
+    "Nationair": {
+      "iata": "NX",
+      "pays": "Canada",
+      "aliases_en": [
+        "nationair",
+        "nx"
+      ],
+      "aliases_fr": [
+        "nationair",
+        "nx"
+      ],
+      "aliases_zh": [
+        "国家航空"
+      ]
+    },
+    "British Airways": {
+      "iata": "BA",
+      "pays": "UK",
+      "aliases_en": [
+        "ba",
+        "british air"
+      ],
+      "aliases_fr": [
+        "ba",
+        "british air"
+      ],
+      "aliases_zh": [
+        "英国航空",
+        "英航"
+      ]
+    },
+    "Air France": {
+      "iata": "AF",
+      "pays": "France",
+      "aliases_en": [
+        "af",
+        "air france"
+      ],
+      "aliases_fr": [
+        "af",
+        "air france"
+      ],
+      "aliases_zh": [
+        "法国航空",
+        "法航"
+      ]
+    },
+    "Lufthansa": {
+      "iata": "LH",
+      "pays": "Germany",
+      "aliases_en": [
+        "lh",
+        "lufthansa"
+      ],
+      "aliases_fr": [
+        "lh",
+        "lufthansa"
+      ],
+      "aliases_zh": [
+        "汉莎航空",
+        "德国汉莎"
+      ]
+    },
+    "Emirates": {
+      "iata": "EK",
+      "pays": "UAE",
+      "aliases_en": [
+        "ek",
+        "emirates air"
+      ],
+      "aliases_fr": [
+        "ek",
+        "emirates air"
+      ],
+      "aliases_zh": [
+        "阿联酋航空",
+        "阿联酋"
+      ]
+    },
+    "Singapore Airlines": {
+      "iata": "SQ",
+      "pays": "Singapore",
+      "aliases_en": [
+        "sq",
+        "singapore air",
+        "sia"
+      ],
+      "aliases_fr": [
+        "sq",
+        "singapore air",
+        "sia"
+      ],
+      "aliases_zh": [
+        "新加坡航空",
+        "新航"
+      ]
+    },
+    "Qantas": {
+      "iata": "QF",
+      "pays": "Australia",
+      "aliases_en": [
+        "qf",
+        "qantas airways"
+      ],
+      "aliases_fr": [
+        "qf",
+        "qantas airways"
+      ],
+      "aliases_zh": [
+        "澳洲航空"
+      ]
+    },
+    "Japan Airlines": {
+      "iata": "JL",
+      "pays": "Japan",
+      "aliases_en": [
+        "jal",
+        "jl",
+        "japan air"
+      ],
+      "aliases_fr": [
+        "jal",
+        "jl",
+        "japan air"
+      ],
+      "aliases_zh": [
+        "日本航空",
+        "日航"
+      ]
+    }
+  },
+  "appareils": {
+    "Boeing 737": {
+      "constructeur": "Boeing",
+      "capacite": "150-215",
+      "type": "moyen-courrier"
+    },
+    "Boeing 757": {
+      "constructeur": "Boeing",
+      "capacite": "200-295",
+      "type": "moyen-courrier"
+    },
+    "Boeing 767": {
+      "constructeur": "Boeing",
+      "capacite": "180-375",
+      "type": "long-courrier"
+    },
+    "Boeing 777": {
+      "constructeur": "Boeing",
+      "capacite": "314-550",
+      "type": "long-courrier"
+    },
+    "Boeing 787": {
+      "constructeur": "Boeing",
+      "capacite": "242-330",
+      "type": "long-courrier"
+    },
+    "Airbus A319": {
+      "constructeur": "Airbus",
+      "capacite": "124-156",
+      "type": "court-courrier"
+    },
+    "Airbus A320": {
+      "constructeur": "Airbus",
+      "capacite": "150-194",
+      "type": "moyen-courrier"
+    },
+    "Airbus A321": {
+      "constructeur": "Airbus",
+      "capacite": "180-240",
+      "type": "moyen-courrier"
+    },
+    "Airbus A330": {
+      "constructeur": "Airbus",
+      "capacite": "250-440",
+      "type": "long-courrier"
+    },
+    "Airbus A350": {
+      "constructeur": "Airbus",
+      "capacite": "300-440",
+      "type": "long-courrier"
+    }
+  },
+  "classes_voyage": {
+    "économique": {
+      "valeur_canonique": "économique",
+      "fr": [
+        "économique",
+        "éco",
+        "classe économique",
+        "tarif économique",
+        "economy"
+      ],
+      "en": [
+        "economy",
+        "economy class",
+        "eco",
+        "coach",
+        "thrift"
+      ],
+      "zh": [
+        "经济舱",
+        "经济",
+        "普通舱",
+        "经济座"
+      ]
+    },
+    "affaires": {
+      "valeur_canonique": "affaires",
+      "fr": [
+        "affaires",
+        "business",
+        "classe affaires",
+        "business class"
+      ],
+      "en": [
+        "business",
+        "business class"
+      ],
+      "zh": [
+        "商务舱",
+        "公务舱",
+        "商务"
+      ]
+    },
+    "première": {
+      "valeur_canonique": "première",
+      "fr": [
+        "première",
+        "première classe",
+        "first",
+        "first class"
+      ],
+      "en": [
+        "first",
+        "first class"
+      ],
+      "zh": [
+        "头等舱",
+        "头等"
+      ]
+    }
+  },
+  "expressions_temporelles": {
+    "relatifs": {
+      "fr": {
+        "aujourd'hui": {
+          "offset_jours": 0
+        },
+        "demain": {
+          "offset_jours": 1
+        },
+        "après-demain": {
+          "offset_jours": 2
+        },
+        "la semaine prochaine": {
+          "offset_jours": "next_week"
+        },
+        "le mois prochain": {
+          "offset_jours": "next_month"
+        },
+        "dans une semaine": {
+          "offset_jours": 7
+        },
+        "dans deux semaines": {
+          "offset_jours": 14
+        },
+        "dans un mois": {
+          "offset_jours": 30
+        },
+        "ce week-end": {
+          "offset_jours": "next_weekend"
+        },
+        "prochaine": {
+          "offset_jours": "next_occurrence"
+        },
+        "suivant": {
+          "offset_jours": "next_occurrence"
+        }
+      },
+      "en": {
+        "today": {
+          "offset_jours": 0
+        },
+        "tomorrow": {
+          "offset_jours": 1
+        },
+        "day after tomorrow": {
+          "offset_jours": 2
+        },
+        "next week": {
+          "offset_jours": "next_week"
+        },
+        "next month": {
+          "offset_jours": "next_month"
+        },
+        "in a week": {
+          "offset_jours": 7
+        },
+        "in two weeks": {
+          "offset_jours": 14
+        },
+        "in a month": {
+          "offset_jours": 30
+        },
+        "this weekend": {
+          "offset_jours": "next_weekend"
+        },
+        "next": {
+          "offset_jours": "next_occurrence"
+        },
+        "following": {
+          "offset_jours": "next_occurrence"
+        }
+      },
+      "zh": {
+        "今天": {
+          "offset_jours": 0
+        },
+        "明天": {
+          "offset_jours": 1
+        },
+        "后天": {
+          "offset_jours": 2
+        },
+        "下周": {
+          "offset_jours": "next_week"
+        },
+        "下个月": {
+          "offset_jours": "next_month"
+        },
+        "一周后": {
+          "offset_jours": 7
+        },
+        "两周后": {
+          "offset_jours": 14
+        },
+        "一个月后": {
+          "offset_jours": 30
+        },
+        "本周末": {
+          "offset_jours": "next_weekend"
+        },
+        "下": {
+          "offset_jours": "next_occurrence"
+        },
+        "未来": {
+          "offset_jours": "next_occurrence"
+        }
+      }
+    },
+    "jours_semaine": {
+      "fr": [
+        "lundi",
+        "mardi",
+        "mercredi",
+        "jeudi",
+        "vendredi",
+        "samedi",
+        "dimanche"
+      ],
+      "en": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday"
+      ],
+      "zh": [
+        "周一",
+        "周二",
+        "周三",
+        "周四",
+        "周五",
+        "周六",
+        "周日",
+        "星期一",
+        "星期二",
+        "星期三",
+        "星期四",
+        "星期五",
+        "星期六",
+        "星期日"
+      ]
+    },
+    "mois": {
+      "fr": [
+        "janvier",
+        "février",
+        "mars",
+        "avril",
+        "mai",
+        "juin",
+        "juillet",
+        "août",
+        "septembre",
+        "octobre",
+        "novembre",
+        "décembre"
+      ],
+      "en": [
+        "january",
+        "february",
+        "march",
+        "april",
+        "may",
+        "june",
+        "july",
+        "august",
+        "september",
+        "october",
+        "november",
+        "december"
+      ],
+      "zh": [
+        "1月",
+        "2月",
+        "3月",
+        "4月",
+        "5月",
+        "6月",
+        "7月",
+        "8月",
+        "9月",
+        "10月",
+        "11月",
+        "12月",
+        "一月",
+        "二月",
+        "三月",
+        "四月",
+        "五月",
+        "六月",
+        "七月",
+        "八月",
+        "九月",
+        "十月",
+        "十一月",
+        "十二月"
+      ]
+    },
+    "periodes_journee": {
+      "fr": {
+        "matin": {
+          "heure_debut": "05:00",
+          "heure_fin": "12:00"
+        },
+        "tôt le matin": {
+          "heure_debut": "05:00",
+          "heure_fin": "08:00"
+        },
+        "après-midi": {
+          "heure_debut": "12:00",
+          "heure_fin": "18:00"
+        },
+        "fin d'après-midi": {
+          "heure_debut": "16:00",
+          "heure_fin": "18:00"
+        },
+        "soir": {
+          "heure_debut": "18:00",
+          "heure_fin": "23:00"
+        },
+        "nuit": {
+          "heure_debut": "23:00",
+          "heure_fin": "05:00"
+        },
+        "midi": {
+          "heure_debut": "12:00",
+          "heure_fin": "13:00"
+        }
+      },
+      "en": {
+        "morning": {
+          "heure_debut": "05:00",
+          "heure_fin": "12:00"
+        },
+        "early morning": {
+          "heure_debut": "05:00",
+          "heure_fin": "08:00"
+        },
+        "afternoon": {
+          "heure_debut": "12:00",
+          "heure_fin": "18:00"
+        },
+        "late afternoon": {
+          "heure_debut": "16:00",
+          "heure_fin": "18:00"
+        },
+        "evening": {
+          "heure_debut": "18:00",
+          "heure_fin": "23:00"
+        },
+        "night": {
+          "heure_debut": "23:00",
+          "heure_fin": "05:00"
+        },
+        "noon": {
+          "heure_debut": "12:00",
+          "heure_fin": "13:00"
+        },
+        "early": {
+          "heure_debut": "05:00",
+          "heure_fin": "09:00"
+        }
+      },
+      "zh": {
+        "早上": {
+          "heure_debut": "05:00",
+          "heure_fin": "12:00"
+        },
+        "上午": {
+          "heure_debut": "08:00",
+          "heure_fin": "12:00"
+        },
+        "清晨": {
+          "heure_debut": "05:00",
+          "heure_fin": "08:00"
+        },
+        "早间": {
+          "heure_debut": "05:00",
+          "heure_fin": "09:00"
+        },
+        "下午": {
+          "heure_debut": "12:00",
+          "heure_fin": "18:00"
+        },
+        "下午晚些时候": {
+          "heure_debut": "16:00",
+          "heure_fin": "18:00"
+        },
+        "晚上": {
+          "heure_debut": "18:00",
+          "heure_fin": "23:00"
+        },
+        "夜间": {
+          "heure_debut": "23:00",
+          "heure_fin": "05:00"
+        },
+        "中午": {
+          "heure_debut": "12:00",
+          "heure_fin": "13:00"
+        }
+      }
+    },
+    "formats_date": {
+      "fr": [
+        "JJ/MM/AAAA",
+        "JJ mois AAAA",
+        "le JJ mois",
+        "le JJ"
+      ],
+      "en": [
+        "MM/DD/YYYY",
+        "Month DD YYYY",
+        "Month DD",
+        "the DDth"
+      ],
+      "zh": [
+        "AAAA年MM月DD日",
+        "MM月DD日",
+        "DD号"
+      ]
+    },
+    "formats_heure": {
+      "fr": [
+        "HHhMM",
+        "HH:MM",
+        "HH heures MM"
+      ],
+      "en": [
+        "HH:MM",
+        "HH:MM am/pm",
+        "HH am/pm"
+      ],
+      "zh": [
+        "HH点MM分",
+        "HH:MM",
+        "上午/下午HH点"
+      ]
+    }
+  },
+  "termes_evaluatifs": {
+    "prix_bas": {
+      "fr": [
+        "pas cher",
+        "bon marché",
+        "abordable",
+        "économique",
+        "budget",
+        "le moins cher",
+        "le plus bas",
+        "moins cher",
+        "meilleur prix"
+      ],
+      "en": [
+        "cheap",
+        "affordable",
+        "budget",
+        "inexpensive",
+        "low cost",
+        "cheapest",
+        "lowest",
+        "least expensive",
+        "best price"
+      ],
+      "zh": [
+        "便宜",
+        "实惠",
+        "低价",
+        "经济",
+        "最便宜",
+        "最低价",
+        "低于",
+        "最低"
+      ]
+    },
+    "prix_eleve": {
+      "fr": [
+        "cher",
+        "luxueux",
+        "premium",
+        "haut de gamme",
+        "confort"
+      ],
+      "en": [
+        "expensive",
+        "luxury",
+        "premium",
+        "high-end",
+        "comfortable"
+      ],
+      "zh": [
+        "贵",
+        "豪华",
+        "高端",
+        "奢华",
+        "舒适"
+      ]
+    },
+    "rapidite": {
+      "fr": [
+        "le plus rapide",
+        "direct",
+        "sans escale",
+        "court",
+        "le plus court"
+      ],
+      "en": [
+        "fastest",
+        "direct",
+        "nonstop",
+        "shortest",
+        "quickest"
+      ],
+      "zh": [
+        "最快",
+        "直飞",
+        "无中转",
+        "最短",
+        "快"
+      ]
+    },
+    "premier_disponible": {
+      "fr": [
+        "le premier",
+        "le plus tôt",
+        "le plus matinal",
+        "dès que possible"
+      ],
+      "en": [
+        "earliest",
+        "first available",
+        "soonest",
+        "as early as possible"
+      ],
+      "zh": [
+        "最早",
+        "第一班",
+        "尽快"
+      ]
+    },
+    "dernier_disponible": {
+      "fr": [
+        "le dernier",
+        "le plus tardif",
+        "le plus tard"
+      ],
+      "en": [
+        "latest",
+        "last flight",
+        "last available"
+      ],
+      "zh": [
+        "最晚",
+        "最后一班",
+        "最新"
+      ]
+    },
+    "jours_ouvres": {
+      "fr": [
+        "en semaine",
+        "jour ouvrable",
+        "hors week-end"
+      ],
+      "en": [
+        "weekday",
+        "business day",
+        "working day"
+      ],
+      "zh": [
+        "工作日",
+        "平日",
+        "非周末"
+      ]
+    }
+  },
+  "type_vol": {
+    "aller_simple": {
+      "fr": [
+        "aller simple",
+        "aller uniquement",
+        "un seul sens"
+      ],
+      "en": [
+        "one way",
+        "one-way",
+        "single"
+      ],
+      "zh": [
+        "单程",
+        "单向"
+      ]
+    },
+    "aller_retour": {
+      "fr": [
+        "aller-retour",
+        "aller et retour",
+        "avec retour"
+      ],
+      "en": [
+        "round trip",
+        "round-trip",
+        "return"
+      ],
+      "zh": [
+        "往返",
+        "来回",
+        "返程"
+      ]
+    },
+    "direct": {
+      "fr": [
+        "direct",
+        "sans escale",
+        "sans correspondance",
+        "vol direct"
+      ],
+      "en": [
+        "direct",
+        "nonstop",
+        "no stop",
+        "non-stop"
+      ],
+      "zh": [
+        "直飞",
+        "无中转",
+        "直达",
+        "不转机"
+      ]
+    },
+    "avec_escale": {
+      "fr": [
+        "avec escale",
+        "avec correspondance",
+        "une escale",
+        "deux escales"
+      ],
+      "en": [
+        "one stop",
+        "two stops",
+        "connecting flight",
+        "with layover"
+      ],
+      "zh": [
+        "经停",
+        "一次中转",
+        "中转",
+        "转机"
+      ]
+    }
+  },
+  "termes_tarif": {
+    "monnaies": {
+      "fr": [
+        "euros",
+        "euro",
+        "€",
+        "dollars",
+        "dollar",
+        "$"
+      ],
+      "en": [
+        "dollars",
+        "dollar",
+        "$",
+        "euros",
+        "euro",
+        "€"
+      ],
+      "zh": [
+        "美元",
+        "欧元",
+        "元",
+        "人民币",
+        "￥",
+        "$"
+      ]
+    },
+    "expressions_prix": {
+      "fr": {
+        "moins de X": "budget_max",
+        "plus de X": "budget_min",
+        "entre X et Y": "budget_range",
+        "autour de X": "budget_approx",
+        "environ X": "budget_approx",
+        "pas plus de X": "budget_max"
+      },
+      "en": {
+        "under X": "budget_max",
+        "below X": "budget_max",
+        "more than X": "budget_min",
+        "between X and Y": "budget_range",
+        "around X": "budget_approx",
+        "about X": "budget_approx",
+        "no more than X": "budget_max",
+        "less than X": "budget_max"
+      },
+      "zh": {
+        "X以下": "budget_max",
+        "不超过X": "budget_max",
+        "X到Y之间": "budget_range",
+        "大约X": "budget_approx",
+        "X左右": "budget_approx",
+        "少于X": "budget_max"
+      }
+    },
+    "fourchettes_prix_vol": {
+      "très_bon_marché": {
+        "min": 100,
+        "max": 150,
+        "label_fr": "très bon marché",
+        "label_en": "very cheap",
+        "label_zh": "非常便宜"
+      },
+      "bon_marché": {
+        "min": 150,
+        "max": 200,
+        "label_fr": "bon marché",
+        "label_en": "cheap",
+        "label_zh": "便宜"
+      },
+      "raisonnable": {
+        "min": 200,
+        "max": 250,
+        "label_fr": "raisonnable",
+        "label_en": "reasonable",
+        "label_zh": "合理"
+      },
+      "assez_cher": {
+        "min": 250,
+        "max": 280,
+        "label_fr": "assez cher",
+        "label_en": "somewhat pricey",
+        "label_zh": "较贵"
+      },
+      "cher": {
+        "min": 280,
+        "max": 300,
+        "label_fr": "cher",
+        "label_en": "expensive",
+        "label_zh": "贵"
+      }
+    }
+  },
+  "termes_confirmation": {
+    "fr": [
+      "oui",
+      "ok",
+      "d'accord",
+      "parfait",
+      "bien sûr",
+      "absolument",
+      "tout à fait",
+      "c'est ça",
+      "exactement",
+      "volontiers",
+      "avec plaisir",
+      "super",
+      "génial",
+      "allez",
+      "je confirme"
+    ],
+    "en": [
+      "yes",
+      "ok",
+      "okay",
+      "sure",
+      "of course",
+      "absolutely",
+      "right",
+      "correct",
+      "perfect",
+      "great",
+      "alright",
+      "yep",
+      "yeah",
+      "confirmed",
+      "let's do it"
+    ],
+    "zh": [
+      "好的",
+      "是的",
+      "对",
+      "没问题",
+      "当然",
+      "好",
+      "可以",
+      "行",
+      "没错",
+      "确认",
+      "同意",
+      "好吧",
+      "嗯",
+      "确定",
+      "就这个"
+    ]
+  },
+  "termes_negation": {
+    "fr": [
+      "non",
+      "pas du tout",
+      "non merci",
+      "je ne pense pas",
+      "plutôt pas",
+      "certainement pas",
+      "jamais",
+      "pas vraiment",
+      "ça ne m'intéresse pas",
+      "je refuse"
+    ],
+    "en": [
+      "no",
+      "nope",
+      "not really",
+      "no thanks",
+      "never",
+      "not at all",
+      "don't want",
+      "not interested",
+      "absolutely not",
+      "negative"
+    ],
+    "zh": [
+      "不",
+      "不是",
+      "不要",
+      "不行",
+      "算了",
+      "不用了",
+      "不想",
+      "拒绝",
+      "不合适",
+      "不对",
+      "没有"
+    ]
+  },
+  "termes_hesitation": {
+    "fr": [
+      "peut-être",
+      "pourquoi pas",
+      "je ne sais pas",
+      "bof",
+      "éventuellement",
+      "ça dépend",
+      "hmm",
+      "je verrai",
+      "je réfléchis",
+      "pas sûr"
+    ],
+    "en": [
+      "maybe",
+      "perhaps",
+      "i don't know",
+      "not sure",
+      "it depends",
+      "hmm",
+      "i'll think about it",
+      "possibly",
+      "let me think"
+    ],
+    "zh": [
+      "也许",
+      "可能",
+      "不确定",
+      "看看吧",
+      "再说吧",
+      "不知道",
+      "想想",
+      "考虑一下",
+      "难说",
+      "随便"
+    ]
+  },
+  "salutations": {
+    "ouverture": {
+      "fr": [
+        "bonjour",
+        "salut",
+        "hello",
+        "bonsoir",
+        "coucou",
+        "hey",
+        "bonne journée"
+      ],
+      "en": [
+        "hello",
+        "hi",
+        "hey",
+        "good morning",
+        "good afternoon",
+        "good evening",
+        "howdy"
+      ],
+      "zh": [
+        "你好",
+        "您好",
+        "嗨",
+        "早上好",
+        "下午好",
+        "晚上好",
+        "大家好"
+      ]
+    },
+    "cloture": {
+      "fr": [
+        "au revoir",
+        "à bientôt",
+        "merci",
+        "bye",
+        "bonne soirée",
+        "à la prochaine",
+        "ciao",
+        "adieu"
+      ],
+      "en": [
+        "goodbye",
+        "bye",
+        "see you",
+        "thanks",
+        "thank you",
+        "take care",
+        "farewell",
+        "see ya"
+      ],
+      "zh": [
+        "再见",
+        "拜拜",
+        "谢谢",
+        "下次见",
+        "感谢",
+        "再会",
+        "告辞"
+      ]
+    }
+  },
+  "slots_reconnus": {
+    "from_city": {
+      "description_fr": "Ville de départ",
+      "description_en": "Departure city",
+      "description_zh": "出发城市",
+      "type": "entite_ville",
+      "obligatoire": true
+    },
+    "to_city": {
+      "description_fr": "Ville d'arrivée",
+      "description_en": "Arrival city",
+      "description_zh": "目的城市",
+      "type": "entite_ville",
+      "obligatoire": true
+    },
+    "depart_day": {
+      "description_fr": "Jour de départ (lundi, mardi...)",
+      "description_en": "Departure day of week",
+      "description_zh": "出发星期",
+      "type": "jour_semaine",
+      "obligatoire": false
+    },
+    "depart_month": {
+      "description_fr": "Mois de départ",
+      "description_en": "Departure month",
+      "description_zh": "出发月份",
+      "type": "mois",
+      "obligatoire": false
+    },
+    "depart_date.day_number": {
+      "description_fr": "Numéro du jour de départ",
+      "description_en": "Departure day number",
+      "description_zh": "出发日期数字",
+      "type": "nombre_1_31",
+      "obligatoire": false
+    },
+    "depart_time": {
+      "description_fr": "Heure de départ",
+      "description_en": "Departure time",
+      "description_zh": "出发时间",
+      "type": "heure",
+      "obligatoire": false
+    },
+    "depart_period": {
+      "description_fr": "Période de départ (matin, après-midi...)",
+      "description_en": "Departure period",
+      "description_zh": "出发时段",
+      "type": "periode_journee",
+      "obligatoire": false
+    },
+    "depart_date_relative": {
+      "description_fr": "Date relative (prochain, suivant...)",
+      "description_en": "Relative date",
+      "description_zh": "相对日期",
+      "type": "relatif",
+      "obligatoire": false
+    },
+    "airline": {
+      "description_fr": "Compagnie aérienne",
+      "description_en": "Airline",
+      "description_zh": "航空公司",
+      "type": "entite_compagnie",
+      "obligatoire": false
+    },
+    "class_type": {
+      "description_fr": "Classe de voyage",
+      "description_en": "Travel class",
+      "description_zh": "舱位等级",
+      "type": "enum_classe",
+      "valeurs": [
+        "économique",
+        "affaires",
+        "première"
+      ],
+      "obligatoire": false
+    },
+    "round_trip": {
+      "description_fr": "Type de trajet (aller simple / aller-retour)",
+      "description_en": "Trip type",
+      "description_zh": "行程类型",
+      "type": "enum_trajet",
+      "valeurs_fr": [
+        "aller simple",
+        "aller-retour"
+      ],
+      "valeurs_en": [
+        "one way",
+        "round trip"
+      ],
+      "valeurs_zh": [
+        "单程",
+        "往返"
+      ],
+      "obligatoire": false
+    },
+    "flight_stop": {
+      "description_fr": "Nombre d'escales",
+      "description_en": "Number of stops",
+      "description_zh": "中转次数",
+      "type": "enum_escales",
+      "valeurs_fr": [
+        "direct",
+        "sans escale",
+        "une escale"
+      ],
+      "valeurs_en": [
+        "nonstop",
+        "direct",
+        "one stop"
+      ],
+      "valeurs_zh": [
+        "直飞",
+        "经停",
+        "一次中转"
+      ],
+      "obligatoire": false
+    },
+    "cost_relative": {
+      "description_fr": "Critère de prix relatif",
+      "description_en": "Relative price criterion",
+      "description_zh": "相对价格标准",
+      "type": "terme_evaluatif_prix",
+      "obligatoire": false
+    },
+    "fare_amount": {
+      "description_fr": "Montant de tarif précis",
+      "description_en": "Specific fare amount",
+      "description_zh": "具体票价金额",
+      "type": "montant_devise",
+      "obligatoire": false
+    },
+    "flight_mod": {
+      "description_fr": "Modificateur de vol (le plus tôt, le plus tard...)",
+      "description_en": "Flight modifier",
+      "description_zh": "航班修饰词",
+      "type": "terme_evaluatif_vol",
+      "obligatoire": false
+    },
+    "arrive_time": {
+      "description_fr": "Heure d'arrivée souhaitée",
+      "description_en": "Desired arrival time",
+      "description_zh": "期望到达时间",
+      "type": "heure",
+      "obligatoire": false
+    },
+    "stop_city": {
+      "description_fr": "Ville d'escale",
+      "description_en": "Stopover city",
+      "description_zh": "中转城市",
+      "type": "entite_ville",
+      "obligatoire": false
+    },
+    "city_name": {
+      "description_fr": "Nom de ville générique (transport au sol)",
+      "description_en": "Generic city name (ground transport)",
+      "description_zh": "城市名称（地面交通）",
+      "type": "entite_ville",
+      "obligatoire": false
+    },
+    "passenger_count": {
+      "description_fr": "Nombre de passagers",
+      "description_en": "Number of passengers",
+      "description_zh": "乘客人数",
+      "type": "entier_positif",
+      "obligatoire": false,
+      "exemples_fr": [
+        "2 personnes",
+        "3 passagers",
+        "un adulte",
+        "pour 4 voyageurs"
+      ],
+      "exemples_en": [
+        "2 people",
+        "3 passengers",
+        "one adult",
+        "for 4 travelers"
+      ],
+      "exemples_zh": [
+        "2个人",
+        "3位乘客",
+        "1名成人",
+        "4人出行"
+      ]
+    },
+    "return_day": {
+      "description_fr": "Jour de retour (lundi, mardi...)",
+      "description_en": "Return day of week",
+      "description_zh": "返程星期",
+      "type": "jour_semaine",
+      "obligatoire": false,
+      "condition": "round_trip == aller-retour"
+    },
+    "return_date_day_number": {
+      "description_fr": "Numéro du jour de retour",
+      "description_en": "Return day number",
+      "description_zh": "返程日期数字",
+      "type": "nombre_1_31",
+      "obligatoire": false,
+      "condition": "round_trip == aller-retour"
+    },
+    "return_month": {
+      "description_fr": "Mois de retour",
+      "description_en": "Return month",
+      "description_zh": "返程月份",
+      "type": "mois",
+      "obligatoire": false,
+      "condition": "round_trip == aller-retour"
+    },
+    "return_date_relative": {
+      "description_fr": "Date de retour relative (dans une semaine, le suivant...)",
+      "description_en": "Relative return date",
+      "description_zh": "相对返程日期",
+      "type": "relatif",
+      "obligatoire": false,
+      "condition": "round_trip == aller-retour"
+    },
+    "return_time": {
+      "description_fr": "Heure de retour souhaitée",
+      "description_en": "Desired return time",
+      "description_zh": "期望返程时间",
+      "type": "heure",
+      "obligatoire": false,
+      "condition": "round_trip == aller-retour"
+    }
+  },
+  "intents": {
+    "salutation": {
+      "description_fr": "Saluer le système",
+      "description_en": "Greet the system",
+      "description_zh": "问候系统",
+      "exemples_fr": [
+        "bonjour",
+        "salut",
+        "hello",
+        "bonsoir"
+      ],
+      "exemples_en": [
+        "hello",
+        "hi there",
+        "good morning"
+      ],
+      "exemples_zh": [
+        "你好",
+        "嗨",
+        "您好"
+      ]
+    },
+    "flight": {
+      "description_fr": "Rechercher un vol",
+      "description_en": "Search for a flight",
+      "description_zh": "搜索航班",
+      "exemples_fr": [
+        "je veux un vol de Denver à Baltimore",
+        "vols Paris-Tokyo",
+        "je cherche un vol direct de Paris à Tokyo mardi matin",
+        "vol aller-retour Boston Baltimore le 15 mars en business",
+        "y a-t-il des vols Delta vers San Francisco ce week-end ?",
+        "je voudrais partir de New York vers Los Angeles vendredi soir pour 2 personnes",
+        "vols pas chers sans escale entre Chicago et Miami"
+      ],
+      "exemples_en": [
+        "i need a flight from denver to baltimore",
+        "flights to san francisco",
+        "I'm looking for a direct flight from Paris to Tokyo Tuesday morning",
+        "round trip Boston Baltimore March 15th in business class",
+        "are there Delta flights to San Francisco this weekend?",
+        "I'd like to fly from New York to Los Angeles Friday evening for 2 people",
+        "cheap nonstop flights between Chicago and Miami"
+      ],
+      "exemples_zh": [
+        "我想从丹佛飞往巴尔的摩",
+        "搜索从旧金山出发的航班",
+        "我要周二早上从巴黎直飞东京",
+        "3月15日波士顿到巴尔的摩商务舱往返",
+        "本周末有没有达美航空飞旧金山的航班？",
+        "我想周五晚上从纽约飞洛杉矶，2个人",
+        "芝加哥到迈阿密的便宜直飞航班"
+      ]
+    },
+    "airfare": {
+      "description_fr": "Demander le tarif d'un vol",
+      "description_en": "Ask for flight fare",
+      "description_zh": "查询机票价格",
+      "exemples_fr": [
+        "quel est le prix",
+        "tarif aller-retour",
+        "combien coûte",
+        "combien coûte un aller-retour Paris-Tokyo en économique ?",
+        "quel est le tarif le moins cher pour Boston en semaine ?",
+        "je cherche un vol moins de 200 euros",
+        "tarif business pour New York s'il vous plaît",
+        "entre 150 et 250 dollars, qu'est-ce que vous avez ?"
+      ],
+      "exemples_en": [
+        "what is the fare",
+        "round trip price",
+        "how much does it cost",
+        "how much is a round trip Paris-Tokyo in economy?",
+        "what's the cheapest fare to Boston on weekdays?",
+        "I'm looking for a flight under 200 dollars",
+        "business class fare to New York please",
+        "between 150 and 250 dollars, what do you have?"
+      ],
+      "exemples_zh": [
+        "票价是多少",
+        "往返票价",
+        "多少钱",
+        "巴黎到东京经济舱往返多少钱？",
+        "工作日飞波士顿最便宜多少？",
+        "我想找200美元以下的航班",
+        "去纽约商务舱价格",
+        "150到250美元之间有什么选择？"
+      ]
+    },
+    "flight_time": {
+      "description_fr": "Demander les horaires d'un vol",
+      "description_en": "Ask for flight schedule/time",
+      "description_zh": "查询航班时刻",
+      "exemples_fr": [
+        "à quelle heure part le vol",
+        "horaires des vols",
+        "quand est-ce que",
+        "à quelle heure part le premier vol de Paris pour Tokyo ?",
+        "y a-t-il des vols le matin entre Boston et Baltimore ?",
+        "horaires des vols Delta New York Los Angeles vendredi",
+        "quel est le dernier vol de la journée pour Miami ?",
+        "quels vols partent après 18h pour Chicago ?"
+      ],
+      "exemples_en": [
+        "what time does the flight leave",
+        "flight schedule",
+        "when does",
+        "what time does the first flight from Paris to Tokyo leave?",
+        "are there morning flights between Boston and Baltimore?",
+        "Delta flight schedules New York Los Angeles Friday",
+        "what is the last flight of the day to Miami?",
+        "which flights depart after 6pm to Chicago?"
+      ],
+      "exemples_zh": [
+        "航班几点出发",
+        "航班时刻表",
+        "什么时候",
+        "从巴黎飞东京的第一班飞机几点出发？",
+        "波士顿到巴尔的摩有没有早班机？",
+        "达美航空周五纽约洛杉矶时刻表",
+        "去迈阿密最晚一班飞机几点？",
+        "几点后有飞往芝加哥的航班？"
+      ]
+    },
+    "aircraft": {
+      "description_fr": "Demander le type d'appareil",
+      "description_en": "Ask about aircraft type",
+      "description_zh": "查询飞机类型",
+      "exemples_fr": [
+        "quel avion est utilisé",
+        "type d'appareil"
+      ],
+      "exemples_en": [
+        "what type of aircraft",
+        "what plane is used"
+      ],
+      "exemples_zh": [
+        "使用什么类型的飞机",
+        "飞机型号"
+      ]
+    },
+    "airline": {
+      "description_fr": "Demander des informations sur une compagnie",
+      "description_en": "Ask about an airline",
+      "description_zh": "查询航空公司信息",
+      "exemples_fr": [
+        "vols de la compagnie delta",
+        "quelles compagnies desservent"
+      ],
+      "exemples_en": [
+        "delta flights",
+        "which airlines fly to"
+      ],
+      "exemples_zh": [
+        "达美航空的航班",
+        "哪些航空公司飞往"
+      ]
+    },
+    "ground_service": {
+      "description_fr": "Demander un service de transport terrestre",
+      "description_en": "Ask about ground transportation",
+      "description_zh": "查询地面交通服务",
+      "exemples_fr": [
+        "comment rejoindre le centre-ville",
+        "navette aéroport"
+      ],
+      "exemples_en": [
+        "how to get downtown",
+        "airport shuttle",
+        "limousine service"
+      ],
+      "exemples_zh": [
+        "如何到市中心",
+        "机场大巴",
+        "机场豪华轿车"
+      ]
+    },
+    "au_revoir": {
+      "description_fr": "Terminer la conversation",
+      "description_en": "End the conversation",
+      "description_zh": "结束对话",
+      "exemples_fr": [
+        "merci au revoir",
+        "c'est tout",
+        "à bientôt"
+      ],
+      "exemples_en": [
+        "thank you goodbye",
+        "that's all",
+        "see you"
+      ],
+      "exemples_zh": [
+        "谢谢再见",
+        "就这些",
+        "拜拜"
+      ]
+    },
+    "correction_slot": {
+      "description_fr": "Corriger une valeur de slot précédemment donnée",
+      "description_en": "Correct a previously given slot value",
+      "description_zh": "纠正之前提供的槽位值",
+      "exemples_fr": [
+        "non pas Boston, je voulais dire Baltimore",
+        "en fait c'est plutôt lundi",
+        "je me suis trompé, c'est mardi",
+        "non, corrigez, je pars de Paris",
+        "pas économique, je veux la business",
+        "en fait je préfère le vol direct",
+        "rectification : je pars le 15 et non le 16"
+      ],
+      "exemples_en": [
+        "no not Boston, I meant Baltimore",
+        "actually it's Monday",
+        "sorry, I made a mistake, it's Tuesday",
+        "no, correct that, I'm leaving from Paris",
+        "not economy, I want business class",
+        "actually I prefer the direct flight",
+        "correction: I leave on the 15th not the 16th"
+      ],
+      "exemples_zh": [
+        "不是波士顿，我是说巴尔的摩",
+        "其实是周一",
+        "我说错了，是周二",
+        "不对，我从巴黎出发",
+        "不是经济舱，我要商务舱",
+        "其实我更想要直飞",
+        "更正一下：我15号出发，不是16号"
+      ],
+      "slots_modifies": [
+        "from_city",
+        "to_city",
+        "depart_day",
+        "depart_date",
+        "class_type",
+        "flight_stop",
+        "airline"
+      ]
+    },
+    "demande_clarification": {
+      "description_fr": "L'utilisateur demande une répétition, clarification ou reformulation du serveur",
+      "description_en": "User asks for repetition, clarification or rephrasing from the server",
+      "description_zh": "用户请求服务器重复、澄清或重新表述",
+      "exemples_fr": [
+        "pouvez-vous répéter ?",
+        "je n'ai pas compris",
+        "c'est quoi exactement ?",
+        "pouvez-vous préciser ?",
+        "qu'est-ce que vous voulez dire ?",
+        "je ne suis pas sûr de comprendre",
+        "pouvez-vous reformuler ?",
+        "expliquez-moi"
+      ],
+      "exemples_en": [
+        "can you repeat that?",
+        "I didn't understand",
+        "what exactly do you mean?",
+        "can you clarify?",
+        "what does that mean?",
+        "I'm not sure I understand",
+        "can you rephrase?",
+        "please explain"
+      ],
+      "exemples_zh": [
+        "能再说一遍吗？",
+        "我没听懂",
+        "这是什么意思？",
+        "能解释一下吗？",
+        "您说的是什么意思？",
+        "我不太明白",
+        "能换种方式说吗？",
+        "请解释一下"
+      ]
+    },
+    "out_of_scope": {
+      "description_fr": "L'utilisateur pose une question hors du domaine des vols",
+      "description_en": "User asks a question outside the flight domain",
+      "description_zh": "用户提出航班领域之外的问题",
+      "exemples_fr": [
+        "quel temps fait-il à Paris ?",
+        "réservez-moi un hôtel",
+        "je veux louer une voiture",
+        "quel est le visa pour le Japon ?",
+        "parlez-moi de la cuisine japonaise"
+      ],
+      "exemples_en": [
+        "what's the weather in Paris?",
+        "book me a hotel",
+        "I want to rent a car",
+        "what visa do I need for Japan?",
+        "tell me about Japanese food"
+      ],
+      "exemples_zh": [
+        "巴黎天气怎么样？",
+        "帮我预订酒店",
+        "我想租一辆车",
+        "去日本需要什么签证？",
+        "介绍一下日本料理"
+      ]
+    }
+  },
+  "grammaires_reconnaissance": {
+    "date_absolue": {
+      "description": "Capture une date précise dans le texte",
+      "fr": [
+        "(\\d{1,2})\\s*(?:janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)(?:\\s*(\\d{4}))?",
+        "(\\d{1,2})/(\\d{1,2})(?:/(\\d{4}))?"
+      ],
+      "en": [
+        "(?:january|february|march|april|may|june|july|august|september|october|november|december)\\s+(\\d{1,2})(?:st|nd|rd|th)?(?:,?\\s*(\\d{4}))?",
+        "(\\d{1,2})/(\\d{1,2})(?:/(\\d{4}))?"
+      ],
+      "zh": [
+        "(\\d{1,2})月(\\d{1,2})(?:日|号)",
+        "(\\d{4})年(\\d{1,2})月(\\d{1,2})(?:日|号)"
+      ]
+    },
+    "heure": {
+      "description": "Capture une heure dans le texte",
+      "fr": [
+        "(\\d{1,2})h(\\d{0,2})",
+        "(\\d{1,2}):(\\d{2})",
+        "(\\d{1,2})\\s*heures?\\s*(\\d{0,2})"
+      ],
+      "en": [
+        "(\\d{1,2}):(\\d{2})\\s*(?:am|pm)?",
+        "(\\d{1,2})\\s*(?:am|pm)",
+        "(\\d{3,4})\\s*(?:am|pm)?"
+      ],
+      "zh": [
+        "(\\d{1,2})点(\\d{0,2})(?:分)?",
+        "上午(\\d{1,2})(?:点|时)",
+        "下午(\\d{1,2})(?:点|时)"
+      ]
+    },
+    "code_vol": {
+      "description": "Code IATA d'un vol (ex: AA275, UA1234)",
+      "all": [
+        "[A-Z]{2}\\s*\\d{3,4}"
+      ]
+    },
+    "code_iata_ville": {
+      "description": "Code IATA d'un aéroport (ex: CDG, JFK)",
+      "all": [
+        "\\b[A-Z]{3}\\b"
+      ]
+    },
+    "montant": {
+      "description": "Montant en dollars ou euros",
+      "fr": [
+        "(\\d+)\\s*(?:euros?|€)",
+        "moins de (\\d+)\\s*(?:euros?|€)",
+        "entre (\\d+) et (\\d+)\\s*(?:euros?|€)"
+      ],
+      "en": [
+        "(\\d+)\\s*(?:dollars?|\\$)",
+        "under (\\d+)\\s*(?:dollars?|\\$)",
+        "between (\\d+) and (\\d+)\\s*(?:dollars?|\\$)"
+      ],
+      "zh": [
+        "(\\d+)\\s*(?:美元|欧元|元)",
+        "(\\d+)以下",
+        "(\\d+)到(\\d+)之间"
+      ]
+    },
+    "nombre_passagers": {
+      "description": "Nombre de passagers",
+      "fr": [
+        "(\\d+)\\s*(?:personnes?|passagers?|adultes?|voyageurs?)"
+      ],
+      "en": [
+        "(\\d+)\\s*(?:persons?|passengers?|adults?|travelers?|people)"
+      ],
+      "zh": [
+        "(\\d+)(?:人|位|名|张)"
+      ]
+    }
+  },
+  "connecteurs": {
+    "fr": [
+      "et",
+      "mais",
+      "aussi",
+      "sinon",
+      "par contre",
+      "en fait",
+      "d'ailleurs",
+      "plutôt",
+      "alors",
+      "donc",
+      "ensuite",
+      "de plus"
+    ],
+    "en": [
+      "and",
+      "but",
+      "also",
+      "otherwise",
+      "actually",
+      "so",
+      "then",
+      "however",
+      "moreover",
+      "instead",
+      "plus"
+    ],
+    "zh": [
+      "而且",
+      "但是",
+      "也",
+      "还有",
+      "然后",
+      "所以",
+      "不过",
+      "另外",
+      "而",
+      "再",
+      "并且"
+    ]
+  },
+  "emotions_utilisateur": {
+    "_description": "États émotionnels détectables dans les messages utilisateur — influencent le style de réponse du serveur",
+    "presse": {
+      "fr": [
+        "urgent",
+        "pressé",
+        "vite",
+        "dès que possible",
+        "rapidement",
+        "immédiatement",
+        "au plus tôt"
+      ],
+      "en": [
+        "urgent",
+        "asap",
+        "quickly",
+        "right away",
+        "immediately",
+        "as soon as possible"
+      ],
+      "zh": [
+        "紧急",
+        "快",
+        "尽快",
+        "马上",
+        "立刻",
+        "越快越好"
+      ],
+      "style_serveur": "concis et efficace, sans fioritures"
+    },
+    "inquiet": {
+      "fr": [
+        "inquiet",
+        "pas sûr",
+        "j'ai peur",
+        "anxieux",
+        "stressé",
+        "j'espère que",
+        "est-ce que c'est sûr"
+      ],
+      "en": [
+        "worried",
+        "anxious",
+        "not sure",
+        "nervous",
+        "stressed",
+        "i hope",
+        "is it safe"
+      ],
+      "zh": [
+        "担心",
+        "不确定",
+        "害怕",
+        "紧张",
+        "焦虑",
+        "希望",
+        "安全吗"
+      ],
+      "style_serveur": "rassurant, empathique, fournir des détails"
+    },
+    "enthousiaste": {
+      "fr": [
+        "super",
+        "génial",
+        "j'adore",
+        "incroyable",
+        "parfait",
+        "excellente idée",
+        "trop bien"
+      ],
+      "en": [
+        "great",
+        "awesome",
+        "love it",
+        "amazing",
+        "perfect",
+        "fantastic",
+        "can't wait"
+      ],
+      "zh": [
+        "太好了",
+        "棒",
+        "太棒了",
+        "完美",
+        "好期待",
+        "超开心",
+        "厉害"
+      ],
+      "style_serveur": "enthousiaste et chaleureux, partager l'excitation"
+    },
+    "frustre": {
+      "fr": [
+        "c'est nul",
+        "pas content",
+        "déçu",
+        "ça ne va pas",
+        "problème",
+        "encore",
+        "toujours pareil"
+      ],
+      "en": [
+        "this is bad",
+        "not happy",
+        "disappointed",
+        "this doesn't work",
+        "problem",
+        "again",
+        "always"
+      ],
+      "zh": [
+        "太糟了",
+        "不满意",
+        "失望",
+        "有问题",
+        "又来了",
+        "总是这样",
+        "不行"
+      ],
+      "style_serveur": "empathique, proposer une solution concrète rapidement"
+    },
+    "indecis": {
+      "fr": [
+        "je ne sais pas",
+        "peut-être",
+        "ça dépend",
+        "je réfléchis",
+        "pas sûr de",
+        "hésitation"
+      ],
+      "en": [
+        "i don't know",
+        "maybe",
+        "it depends",
+        "i'm thinking",
+        "not sure about",
+        "undecided"
+      ],
+      "zh": [
+        "不知道",
+        "也许",
+        "看情况",
+        "想想",
+        "不确定",
+        "犹豫"
+      ],
+      "style_serveur": "guider avec options claires, facteur de branchement élevé"
+    },
+    "satisfait": {
+      "fr": [
+        "merci",
+        "très bien",
+        "c'est bon",
+        "content",
+        "satisfait",
+        "excellent service"
+      ],
+      "en": [
+        "thank you",
+        "great",
+        "that's good",
+        "happy",
+        "satisfied",
+        "excellent service"
+      ],
+      "zh": [
+        "谢谢",
+        "很好",
+        "满意",
+        "高兴",
+        "服务很棒",
+        "太感谢了"
+      ],
+      "style_serveur": "chaleureux, confirmer et proposer aide supplémentaire"
+    }
+  },
+  "styles_serveur": {
+    "_description": "Étiquettes de style émotionnel pour les prompts NLG du serveur (étape 5)",
+    "enthousiaste": {
+      "description_fr": "Ton joyeux, excité, use d'emojis ✈️🌍",
+      "description_en": "Joyful, excited tone, use emojis",
+      "description_zh": "热情活泼，使用表情符号",
+      "declencheurs": [
+        "salutation",
+        "confirmation_reservation",
+        "utilisateur_enthousiaste"
+      ]
+    },
+    "rassurant": {
+      "description_fr": "Ton calme, bienveillant, donne des détails",
+      "description_en": "Calm, caring tone, provide details",
+      "description_zh": "安抚平静，提供详细信息",
+      "declencheurs": [
+        "utilisateur_inquiet",
+        "vol_annule",
+        "probleme_reservation"
+      ]
+    },
+    "empathique": {
+      "description_fr": "Reconnaître la frustration, proposer solution",
+      "description_en": "Acknowledge frustration, offer solution",
+      "description_zh": "理解用户情绪，提供解决方案",
+      "declencheurs": [
+        "utilisateur_frustre",
+        "incomprehension",
+        "rejet_multiple"
+      ]
+    },
+    "guide": {
+      "description_fr": "Proposer des options numérotées, facteur de branchement 5-8",
+      "description_en": "Offer numbered options, high branching factor",
+      "description_zh": "提供编号选项，高分支因子",
+      "declencheurs": [
+        "utilisateur_indecis",
+        "criteres_insuffisants",
+        "demande_alternatives"
+      ]
+    },
+    "concis": {
+      "description_fr": "Réponses courtes, directes, sans redondance",
+      "description_en": "Short, direct answers, no redundancy",
+      "description_zh": "简洁直接，不重复",
+      "declencheurs": [
+        "utilisateur_presse",
+        "confirmation_simple"
+      ]
+    },
+    "felicitant": {
+      "description_fr": "Féliciter le choix, encourager",
+      "description_en": "Congratulate the choice, encourage",
+      "description_zh": "称赞选择，给予鼓励",
+      "declencheurs": [
+        "reservation_confirmee",
+        "utilisateur_satisfait"
+      ]
+    },
+    "neutre": {
+      "description_fr": "Ton informatif standard, sans charge émotionnelle",
+      "description_en": "Standard informative tone",
+      "description_zh": "标准信息化语气",
+      "declencheurs": [
+        "demande_information_simple",
+        "defaut"
+      ]
+    }
+  },
+  "contenu_emotionnel": {
+    "_description": "Vocabulaire expressif pour les productions du serveur (étape 5). Permet d'introduire variabilité et contenu émotionnel dans les réponses du système.",
+    "emotions_utilisateur": {
+      "enthousiasme": {
+        "description_fr": "Utilisateur enthousiaste, excité par son voyage",
+        "signaux_fr": [
+          "j'ai hâte",
+          "trop bien",
+          "super",
+          "génial",
+          "j'adore",
+          "incroyable",
+          "vivement"
+        ],
+        "signaux_en": [
+          "can't wait",
+          "so excited",
+          "amazing",
+          "love it",
+          "awesome",
+          "fantastic"
+        ],
+        "signaux_zh": [
+          "太棒了",
+          "好期待",
+          "超级",
+          "好兴奋",
+          "太好了",
+          "真棒",
+          "迫不及待"
+        ],
+        "reponse_serveur_ton": "chaleureux et enthousiaste"
+      },
+      "anxiete": {
+        "description_fr": "Utilisateur stressé, inquiet pour son voyage",
+        "signaux_fr": [
+          "j'ai peur",
+          "c'est compliqué",
+          "je suis stressé",
+          "je ne sais pas si",
+          "et si"
+        ],
+        "signaux_en": [
+          "i'm worried",
+          "what if",
+          "i'm scared",
+          "it's complicated",
+          "i'm not sure"
+        ],
+        "signaux_zh": [
+          "我担心",
+          "怎么办",
+          "很紧张",
+          "要是",
+          "万一",
+          "不放心",
+          "害怕"
+        ],
+        "reponse_serveur_ton": "rassurant et empathique"
+      },
+      "frustration": {
+        "description_fr": "Utilisateur frustré par les prix ou l'absence de résultat",
+        "signaux_fr": [
+          "c'est trop cher",
+          "rien ne correspond",
+          "je ne trouve pas",
+          "c'est nul",
+          "pfff"
+        ],
+        "signaux_en": [
+          "too expensive",
+          "nothing works",
+          "i can't find",
+          "that's awful",
+          "ugh"
+        ],
+        "signaux_zh": [
+          "太贵了",
+          "找不到",
+          "没有合适的",
+          "真烦",
+          "太差了",
+          "不行"
+        ],
+        "reponse_serveur_ton": "patient, compréhensif, proposer alternative"
+      },
+      "indecision": {
+        "description_fr": "Utilisateur hésitant, difficile à cerner",
+        "signaux_fr": [
+          "je ne sais pas",
+          "peut-être",
+          "bof",
+          "ça dépend",
+          "j'hésite"
+        ],
+        "signaux_en": [
+          "i don't know",
+          "maybe",
+          "it depends",
+          "i'm not sure",
+          "hmm"
+        ],
+        "signaux_zh": [
+          "不知道",
+          "也许",
+          "看情况",
+          "不确定",
+          "纠结",
+          "犹豫"
+        ],
+        "reponse_serveur_ton": "guidant, posant des questions ciblées"
+      },
+      "satisfaction": {
+        "description_fr": "Utilisateur satisfait du résultat",
+        "signaux_fr": [
+          "parfait",
+          "c'est exactement ça",
+          "super",
+          "merci beaucoup",
+          "nickel"
+        ],
+        "signaux_en": [
+          "perfect",
+          "exactly",
+          "great",
+          "thank you so much",
+          "that's it"
+        ],
+        "signaux_zh": [
+          "完美",
+          "就是这个",
+          "太好了",
+          "非常感谢",
+          "好极了",
+          "正是"
+        ],
+        "reponse_serveur_ton": "chaleureux, conclure positivement"
+      },
+      "impatience": {
+        "description_fr": "Utilisateur pressé, veut aller vite",
+        "signaux_fr": [
+          "vite",
+          "rapidement",
+          "dépêchez-vous",
+          "le plus tôt possible",
+          "urgent"
+        ],
+        "signaux_en": [
+          "quickly",
+          "hurry",
+          "asap",
+          "as fast as possible",
+          "urgent"
+        ],
+        "signaux_zh": [
+          "快点",
+          "尽快",
+          "紧急",
+          "马上",
+          "赶紧",
+          "急"
+        ],
+        "reponse_serveur_ton": "efficace, réponse directe sans fioritures"
+      }
+    },
+    "tons_serveur": {
+      "enthousiaste": {
+        "description": "Serveur excité, valorise le choix de l'utilisateur",
+        "marqueurs_fr": [
+          "Excellent choix !",
+          "Magnifique destination !",
+          "Parfait !",
+          "Super !",
+          "Quelle aventure !"
+        ],
+        "marqueurs_en": [
+          "Excellent choice!",
+          "What a great destination!",
+          "Perfect!",
+          "Awesome!",
+          "What an adventure!"
+        ],
+        "marqueurs_zh": [
+          "太好了！",
+          "绝佳选择！",
+          "完美！",
+          "好极了！",
+          "多棒的旅程！"
+        ],
+        "emoji_typiques": [
+          "✈️",
+          "🌍",
+          "🎉",
+          "⭐",
+          "🚀"
+        ]
+      },
+      "rassurant": {
+        "description": "Serveur calme et bienveillant face à l'anxiété",
+        "marqueurs_fr": [
+          "Ne vous inquiétez pas",
+          "Je m'occupe de tout",
+          "Tout va bien se passer",
+          "Vous êtes entre de bonnes mains",
+          "Laissez-moi vérifier pour vous"
+        ],
+        "marqueurs_en": [
+          "Don't worry",
+          "I'll take care of everything",
+          "Everything will be fine",
+          "You're in good hands",
+          "Let me check for you"
+        ],
+        "marqueurs_zh": [
+          "别担心",
+          "我来处理",
+          "一切都会好的",
+          "放心吧",
+          "让我帮您查一下"
+        ],
+        "emoji_typiques": [
+          "😊",
+          "✅",
+          "💙",
+          "🤝"
+        ]
+      },
+      "empathique": {
+        "description": "Serveur comprend la frustration et propose de l'aide",
+        "marqueurs_fr": [
+          "Je comprends votre frustration",
+          "C'est effectivement dommage",
+          "Je vais faire de mon mieux",
+          "Permettez-moi de chercher une alternative"
+        ],
+        "marqueurs_en": [
+          "I understand your frustration",
+          "That's indeed unfortunate",
+          "I'll do my best",
+          "Let me find an alternative for you"
+        ],
+        "marqueurs_zh": [
+          "我理解您的困扰",
+          "这确实很遗憾",
+          "我尽力帮您",
+          "让我为您找一个替代方案"
+        ],
+        "emoji_typiques": [
+          "😔",
+          "💪",
+          "🔍"
+        ]
+      },
+      "guidant": {
+        "description": "Serveur guide l'utilisateur hésitant avec des questions",
+        "marqueurs_fr": [
+          "Pour mieux vous aider, dites-moi...",
+          "Quelle est votre priorité ?",
+          "Préférez-vous... ou... ?",
+          "Voyagez-vous seul ou en groupe ?"
+        ],
+        "marqueurs_en": [
+          "To better help you, tell me...",
+          "What's your priority?",
+          "Do you prefer... or...?",
+          "Are you traveling alone or in a group?"
+        ],
+        "marqueurs_zh": [
+          "为了更好地帮助您，请告诉我...",
+          "您最看重什么？",
+          "您更倾向于...还是...？",
+          "您是独自旅行还是团体出行？"
+        ],
+        "emoji_typiques": [
+          "🤔",
+          "❓",
+          "💡"
+        ]
+      },
+      "efficace": {
+        "description": "Serveur direct, va à l'essentiel pour l'utilisateur pressé",
+        "marqueurs_fr": [
+          "Voici les résultats :",
+          "En résumé :",
+          "Option retenue :",
+          "Réservation confirmée ✅"
+        ],
+        "marqueurs_en": [
+          "Here are the results:",
+          "In summary:",
+          "Selected option:",
+          "Booking confirmed ✅"
+        ],
+        "marqueurs_zh": [
+          "以下是结果：",
+          "简而言之：",
+          "已选方案：",
+          "预订已确认 ✅"
+        ],
+        "emoji_typiques": [
+          "✅",
+          "⚡",
+          "📋"
+        ]
+      },
+      "celebrant": {
+        "description": "Serveur célèbre la confirmation de réservation",
+        "marqueurs_fr": [
+          "Félicitations !",
+          "Votre voyage est confirmé !",
+          "Bon voyage !",
+          "Profitez bien de votre voyage !",
+          "Vous allez adorer !"
+        ],
+        "marqueurs_en": [
+          "Congratulations!",
+          "Your trip is confirmed!",
+          "Have a great trip!",
+          "Enjoy your journey!",
+          "You're going to love it!"
+        ],
+        "marqueurs_zh": [
+          "恭喜！",
+          "您的旅程已确认！",
+          "祝旅途愉快！",
+          "好好享受旅行！",
+          "您一定会喜欢的！"
+        ],
+        "emoji_typiques": [
+          "🎉",
+          "🥳",
+          "✈️",
+          "🌟",
+          "🎊"
+        ]
+      }
+    },
+    "formules_expressives": {
+      "accueil": {
+        "fr": [
+          "Bonjour ! Je suis VoyageAssistant, votre expert en vols. 🛫 Comment puis-je vous aider aujourd'hui ?",
+          "Salut ! Prêt à décoller ? Dites-moi où vous souhaitez aller ! ✈️",
+          "Bonsoir ! Je suis là pour trouver le vol idéal pour vous. Par où commençons-nous ?"
+        ],
+        "en": [
+          "Hello! I'm VoyageAssistant, your flight expert. 🛫 How can I help you today?",
+          "Hi there! Ready to take off? Tell me where you want to go! ✈️",
+          "Good evening! I'm here to find the perfect flight for you. Where shall we start?"
+        ],
+        "zh": [
+          "您好！我是VoyageAssistant，您的专属航班助手。🛫 今天我能为您做什么？",
+          "嗨！准备起飞了吗？告诉我您想去哪里！✈️",
+          "晚上好！我来帮您找到最完美的航班。我们从哪里开始？"
+        ]
+      },
+      "resultats_trouves": {
+        "fr": [
+          "Bonne nouvelle ! J'ai trouvé {n} vols qui correspondent à vos critères. 🎯",
+          "Super, voici les meilleures options disponibles pour vous :",
+          "Excellent ! {n} vols trouvés — voici les plus pertinents :"
+        ],
+        "en": [
+          "Great news! I found {n} flights matching your criteria. 🎯",
+          "Here are the best available options for you:",
+          "Excellent! {n} flights found — here are the most relevant ones:"
+        ],
+        "zh": [
+          "好消息！我找到了{n}个符合您要求的航班。🎯",
+          "为您找到以下最佳选择：",
+          "太好了！找到{n}个航班——以下是最相关的："
+        ]
+      },
+      "aucun_resultat": {
+        "fr": [
+          "Malheureusement, aucun vol ne correspond exactement à vos critères. 😔 Essayons d'élargir la recherche ?",
+          "Je suis désolé, pas de vol disponible avec ces paramètres. Voulez-vous que j'assouplisse les contraintes ?",
+          "Hmm, rien trouvé... Puis-je vous suggérer des dates ou compagnies alternatives ?"
+        ],
+        "en": [
+          "Unfortunately, no flight matches your exact criteria. 😔 Shall we broaden the search?",
+          "I'm sorry, no flights available with these parameters. Would you like me to relax the constraints?",
+          "Hmm, nothing found... May I suggest alternative dates or airlines?"
+        ],
+        "zh": [
+          "很遗憾，没有找到完全符合您要求的航班。😔 要不要扩大搜索范围？",
+          "抱歉，这些条件下没有可用航班。需要我放宽限制重新搜索吗？",
+          "嗯，没有结果……我可以为您推荐其他日期或航空公司吗？"
+        ]
+      },
+      "confirmation_reservation": {
+        "fr": [
+          "🎉 C'est confirmé ! Votre vol {vol} est réservé. Bon voyage et profitez bien !",
+          "✅ Réservation effectuée ! Vol {vol} — vous allez adorer cette destination !",
+          "Félicitations ! 🥳 Votre aventure vers {destination} commence maintenant !"
+        ],
+        "en": [
+          "🎉 Confirmed! Your flight {vol} is booked. Have a wonderful trip!",
+          "✅ Booking complete! Flight {vol} — you're going to love this destination!",
+          "Congratulations! 🥳 Your adventure to {destination} starts now!"
+        ],
+        "zh": [
+          "🎉 确认成功！您的{vol}航班已预订。祝旅途愉快！",
+          "✅ 预订完成！{vol}航班——您一定会爱上这个目的地！",
+          "恭喜！🥳 您前往{destination}的旅程现在开始了！"
+        ]
+      },
+      "demande_precision": {
+        "fr": [
+          "Pour vous proposer les meilleures options, j'aurais besoin de quelques précisions...",
+          "Petite question pour affiner ma recherche : {question}",
+          "Je veux être sûr de bien comprendre votre demande — {question} ?"
+        ],
+        "en": [
+          "To offer you the best options, I need a few more details...",
+          "Quick question to refine my search: {question}",
+          "I want to make sure I understand your request correctly — {question}?"
+        ],
+        "zh": [
+          "为了给您推荐最佳选择，我需要一些补充信息……",
+          "为了精确搜索，请问：{question}",
+          "我想确认一下您的需求——{question}？"
+        ]
+      },
+      "alternative_proposee": {
+        "fr": [
+          "Je n'ai pas trouvé exactement ce que vous cherchez, mais voici une excellente alternative :",
+          "Pas de vol direct disponible, mais cette option est très intéressante :",
+          "Voici ce qui se rapproche le plus de votre demande :"
+        ],
+        "en": [
+          "I didn't find exactly what you're looking for, but here's a great alternative:",
+          "No direct flight available, but this option is very interesting:",
+          "Here's what comes closest to your request:"
+        ],
+        "zh": [
+          "没有找到完全符合的选项，但这里有一个很好的替代方案：",
+          "没有直飞航班，但这个选项非常值得考虑：",
+          "以下是最接近您需求的选项："
+        ]
+      },
+      "au_revoir": {
+        "fr": [
+          "Merci d'avoir utilisé VoyageAssistant ! ✈️ À bientôt pour votre prochain voyage !",
+          "Bon voyage ! N'hésitez pas à revenir si vous avez besoin d'aide. 🌍",
+          "À bientôt ! Que votre voyage soit mémorable ! 🎉"
+        ],
+        "en": [
+          "Thank you for using VoyageAssistant! ✈️ See you for your next trip!",
+          "Have a great trip! Feel free to come back if you need help. 🌍",
+          "Goodbye! May your journey be unforgettable! 🎉"
+        ],
+        "zh": [
+          "感谢使用VoyageAssistant！✈️ 期待您下次的旅程！",
+          "祝旅途愉快！如果需要帮助随时回来。🌍",
+          "再见！愿您的旅程难忘！🎉"
+        ]
+      }
+    },
+    "emojis_contexte": {
+      "vol_depart": "✈️",
+      "vol_arrivee": "🛬",
+      "destination": "🌍",
+      "prix_bas": "💰",
+      "prix_eleve": "💎",
+      "direct": "⚡",
+      "escale": "🔄",
+      "confirmation": "✅",
+      "erreur": "❌",
+      "attention": "⚠️",
+      "recherche": "🔍",
+      "celebration": "🎉",
+      "heure": "🕐",
+      "calendrier": "📅",
+      "passager": "👤",
+      "bagages": "🧳",
+      "classe_eco": "💺",
+      "classe_business": "🛋️",
+      "classe_first": "👑",
+      "surprise": "😮",
+      "satisfaction": "😊",
+      "frustration": "😔",
+      "question": "❓",
+      "conseil": "💡",
+      "etoile": "⭐"
+    },
+    "variabilite_lexicale": {
+      "recommander": {
+        "fr": [
+          "je vous recommande",
+          "je vous propose",
+          "voici",
+          "je suggère",
+          "optez pour"
+        ],
+        "en": [
+          "I recommend",
+          "I suggest",
+          "here is",
+          "I propose",
+          "go for"
+        ],
+        "zh": [
+          "我推荐",
+          "我建议",
+          "这里是",
+          "我提议",
+          "可以考虑"
+        ]
+      },
+      "trouver": {
+        "fr": [
+          "j'ai trouvé",
+          "voici",
+          "j'ai déniché",
+          "j'ai sélectionné",
+          "résultats :"
+        ],
+        "en": [
+          "I found",
+          "here are",
+          "I selected",
+          "results:",
+          "I've got"
+        ],
+        "zh": [
+          "我找到了",
+          "以下是",
+          "我筛选出了",
+          "结果：",
+          "为您找到"
+        ]
+      },
+      "cher": {
+        "fr": [
+          "cher",
+          "coûteux",
+          "onéreux",
+          "élevé",
+          "au-dessus du budget"
+        ],
+        "en": [
+          "expensive",
+          "pricey",
+          "costly",
+          "high",
+          "above budget"
+        ],
+        "zh": [
+          "贵",
+          "昂贵",
+          "费用高",
+          "超出预算",
+          "价格偏高"
+        ]
+      },
+      "confirmer": {
+        "fr": [
+          "confirmer",
+          "valider",
+          "finaliser",
+          "réserver",
+          "procéder"
+        ],
+        "en": [
+          "confirm",
+          "validate",
+          "finalize",
+          "book",
+          "proceed"
+        ],
+        "zh": [
+          "确认",
+          "确定",
+          "完成预订",
+          "预订",
+          "进行"
+        ]
+      }
+    }
+  },
+  "multi_slots_patterns": {
+    "_description": "Exemples d'énoncés utilisateur contenant plusieurs slots simultanément — utiles pour le prompt LLM de l'étape 4",
+    "exemples": [
+      {
+        "enonce_fr": "Je veux un vol direct de Paris à Tokyo mardi matin en économique",
+        "enonce_en": "I want a direct flight from Paris to Tokyo Tuesday morning in economy",
+        "enonce_zh": "我要周二早上从巴黎直飞东京，经济舱",
+        "slots_extraits": {
+          "from_city": "Paris",
+          "to_city": "Tokyo",
+          "flight_stop": "direct",
+          "depart_day": "mardi",
+          "depart_period": "matin",
+          "class_type": "économique"
+        },
+        "intent": "flight"
+      },
+      {
+        "enonce_fr": "Aller-retour Boston Baltimore le 15 mars, retour le 22, pour 2 personnes, pas plus de 250 dollars",
+        "enonce_en": "Round trip Boston Baltimore March 15th, return on the 22nd, for 2 people, no more than 250 dollars",
+        "enonce_zh": "波士顿到巴尔的摩3月15日出发，22日返回，2人，不超过250美元",
+        "slots_extraits": {
+          "from_city": "Boston",
+          "to_city": "Baltimore",
+          "round_trip": "aller-retour",
+          "depart_date_day_number": 15,
+          "depart_month": "mars",
+          "return_date_day_number": 22,
+          "return_month": "mars",
+          "passenger_count": 2,
+          "fare_amount": 250,
+          "cost_relative": "budget_max"
+        },
+        "intent": "flight"
+      },
+      {
+        "enonce_fr": "Y a-t-il des vols Delta sans escale vers San Francisco vendredi soir ?",
+        "enonce_en": "Are there Delta nonstop flights to San Francisco Friday evening?",
+        "enonce_zh": "周五晚上有没有达美航空直飞旧金山的航班？",
+        "slots_extraits": {
+          "airline": "Delta Air Lines",
+          "to_city": "San Francisco",
+          "flight_stop": "direct",
+          "depart_day": "vendredi",
+          "depart_period": "soir"
+        },
+        "intent": "flight"
+      },
+      {
+        "enonce_fr": "Combien coûte le vol le moins cher de New York à Los Angeles en semaine ?",
+        "enonce_en": "What's the cheapest flight from New York to Los Angeles on weekdays?",
+        "enonce_zh": "工作日从纽约到洛杉矶最便宜的机票多少钱？",
+        "slots_extraits": {
+          "from_city": "New York",
+          "to_city": "Los Angeles",
+          "cost_relative": "prix_bas",
+          "flight_mod": "le moins cher"
+        },
+        "intent": "airfare"
+      },
+      {
+        "enonce_fr": "Je veux le premier vol direct de Chicago à Miami demain matin",
+        "enonce_en": "I want the first direct flight from Chicago to Miami tomorrow morning",
+        "enonce_zh": "我想要明天早上从芝加哥直飞迈阿密的第一班飞机",
+        "slots_extraits": {
+          "from_city": "Chicago",
+          "to_city": "Miami",
+          "flight_stop": "direct",
+          "depart_date_relative": "demain",
+          "depart_period": "matin",
+          "flight_mod": "le premier"
+        },
+        "intent": "flight"
+      },
+      {
+        "enonce_fr": "Vol aller simple Paris New York business class dès que possible",
+        "enonce_en": "One way flight Paris New York business class as soon as possible",
+        "enonce_zh": "尽快从巴黎到纽约的单程商务舱",
+        "slots_extraits": {
+          "from_city": "Paris",
+          "to_city": "New York",
+          "round_trip": "aller_simple",
+          "class_type": "affaires",
+          "depart_date_relative": "dès que possible",
+          "flight_mod": "le plus tôt"
+        },
+        "intent": "flight"
+      },
+      {
+        "enonce_fr": "Quels vols United Airlines partent de Denver vers Seattle après 17h avec escale ?",
+        "enonce_en": "What United Airlines flights leave Denver to Seattle after 5pm with a stop?",
+        "enonce_zh": "美联航有没有17点后从丹佛到西雅图的经停航班？",
+        "slots_extraits": {
+          "airline": "United Airlines",
+          "from_city": "Denver",
+          "to_city": "Seattle",
+          "depart_time": "17:00",
+          "flight_stop": "avec_escale"
+        },
+        "intent": "flight_time"
+      }
+    ]
+  },
+  "prompt_guidelines_etape4": {
+    "_description": "Instructions à intégrer dans le prompt LLM pour l'étape 4 — identification d'intent et extraction de slots",
+    "tache": "Identifier l'intent principal de l'utilisateur et extraire les valeurs de slots présents dans l'énoncé",
+    "intents_disponibles": [
+      "salutation",
+      "flight",
+      "airfare",
+      "flight_time",
+      "aircraft",
+      "airline",
+      "ground_service",
+      "au_revoir",
+      "correction_slot",
+      "demande_clarification",
+      "out_of_scope"
+    ],
+    "slots_disponibles": [
+      "from_city",
+      "to_city",
+      "depart_day",
+      "depart_month",
+      "depart_date.day_number",
+      "depart_time",
+      "depart_period",
+      "depart_date_relative",
+      "airline",
+      "class_type",
+      "round_trip",
+      "flight_stop",
+      "cost_relative",
+      "fare_amount",
+      "flight_mod",
+      "arrive_time",
+      "stop_city",
+      "city_name",
+      "passenger_count",
+      "return_day",
+      "return_date_day_number",
+      "return_month",
+      "return_date_relative",
+      "return_time"
+    ],
+    "instructions_fr": [
+      "Identifie l'intent principal parmi la liste des intents disponibles",
+      "Extrais toutes les valeurs de slots présentes dans l'énoncé, même partielles",
+      "Si plusieurs intents sont possibles (ex: flight + airfare), choisis le plus spécifique",
+      "Pour les dates relatives (demain, la semaine prochaine), conserve l'expression telle quelle",
+      "Pour les noms de villes, retourne le nom canonique (ex: 'Frisco' → 'San Francisco')",
+      "Pour les compagnies, retourne le nom canonique (ex: 'delta' → 'Delta Air Lines')",
+      "Si un slot est ambigu ou absent, ne l'invente pas — laisse-le null",
+      "Retourne un JSON avec les champs: intent, slots, langue_detectee, confiance (0-1)"
+    ],
+    "instructions_en": [
+      "Identify the main intent from the list of available intents",
+      "Extract all slot values present in the utterance, even partial ones",
+      "If multiple intents are possible (e.g. flight + airfare), choose the most specific one",
+      "For relative dates (tomorrow, next week), keep the expression as-is",
+      "For city names, return the canonical name (e.g. 'Frisco' → 'San Francisco')",
+      "For airlines, return the canonical name (e.g. 'delta' → 'Delta Air Lines')",
+      "If a slot is ambiguous or absent, do not invent it — leave it null",
+      "Return a JSON with fields: intent, slots, langue_detectee, confiance (0-1)"
+    ],
+    "instructions_zh": [
+      "从可用意图列表中识别主要意图",
+      "提取话语中所有存在的槽位值，即使是部分的",
+      "如果可能有多个意图（如flight + airfare），选择最具体的那个",
+      "对于相对日期（明天、下周），保留原始表达",
+      "对于城市名称，返回规范名称（如'Frisco' → 'San Francisco'）",
+      "对于航空公司，返回规范名称（如'delta' → '达美航空'）",
+      "如果槽位模糊或缺失，不要凭空捏造——将其设为null",
+      "返回包含以下字段的JSON：intent, slots, langue_detectee, confiance (0-1)"
+    ],
+    "exemple_sortie": {
+      "enonce": "Je veux un vol direct de Paris à Tokyo mardi matin en économique",
+      "sortie_attendue": {
+        "intent": "flight",
+        "slots": {
+          "from_city": "Paris",
+          "to_city": "Tokyo",
+          "flight_stop": "direct",
+          "depart_day": "mardi",
+          "depart_period": "matin",
+          "class_type": "économique",
+          "passenger_count": null,
+          "airline": null,
+          "round_trip": null,
+          "fare_amount": null
+        },
+        "langue_detectee": "fr",
+        "confiance": 0.97
+      }
+    }
+  }
+}

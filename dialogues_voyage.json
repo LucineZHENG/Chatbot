@@ -1,0 +1,561 @@
+{
+  "_meta": {
+    "projet": "VoyageAssistant",
+    "description": "Corpus de dialogues représentatifs — système conversationnel de réservation de vols",
+    "version": "1.0",
+    "langue_base": "français",
+    "nb_dialogues": 20,
+    "situations_couvertes": ["compréhension", "acceptation", "incompréhension", "correction", "hésitation"],
+    "generative_ai_used": "Claude (Anthropic) — Prompt utilisé : 'Génère des dialogues réalistes entre un utilisateur et VoyageAssistant pour la sous-tâche HTA [X], avec les données réelles suivantes : [vol extrait de flights_database_v2.json]. Classe chaque dialogue selon sa situation de dialogue (compréhension, acceptation, incompréhension). Assure un facteur de branchement élevé (5-10) pour les unités de dialogue complexes.'"
+  },
+
+  "dialogues": [
+
+    {
+      "id": 1,
+      "titre": "Parcours nominal — Recherche de vol simple",
+      "situation": "compréhension",
+      "sous_tache_hta": "1.1 Identifier départ/arrivée → 1.2 Présenter les vols disponibles",
+      "langue": "fr",
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Bonjour !", "intent": "salutation", "slots": {}},
+        {"locuteur": "serveur", "message": "Bonjour ! Je suis VoyageAssistant, votre expert en vols. ✈️ Comment puis-je vous aider aujourd'hui ?"},
+        {"locuteur": "utilisateur", "message": "Je veux un vol de Denver à Baltimore.", "intent": "flight", "slots": {"from_city": "Denver", "to_city": "Baltimore"}},
+        {"locuteur": "serveur", "message": "Parfait ! J'ai trouvé un vol direct pour vous : le LH101 de Lufthansa, départ 13h15, arrivée 14h38, à bord d'un Boeing 777. Tarif : 130$. Souhaitez-vous réserver ce vol ?"},
+        {"locuteur": "utilisateur", "message": "Oui, c'est parfait !", "intent": "accepter", "slots": {}},
+        {"locuteur": "serveur", "message": "🎉 Excellent ! Votre vol LH101 Denver → Baltimore est confirmé. Bon voyage !"}
+      ]
+    },
+
+    {
+      "id": 2,
+      "titre": "Recherche avec critère de prix",
+      "situation": "compréhension",
+      "sous_tache_hta": "1.1 Identifier départ/arrivée → 1.3 Filtrer par prix → 1.2 Présenter vols",
+      "langue": "fr",
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Bonjour, je cherche un vol pas cher de Baltimore à San Francisco.", "intent": "airfare", "slots": {"from_city": "Baltimore", "to_city": "San Francisco", "cost_relative": "prix_bas"}},
+        {"locuteur": "serveur", "message": "Bonne nouvelle ! J'ai le vol AA103 d'American Airlines, direct, départ 12h00, arrivée 14h45, à bord d'un Airbus A330. Tarif : 180$. C'est l'une des meilleures offres disponibles. Ça vous convient ?"},
+        {"locuteur": "utilisateur", "message": "Vous n'avez pas moins cher ?", "intent": "airfare", "slots": {"cost_relative": "prix_bas"}},
+        {"locuteur": "serveur", "message": "Pour un tarif encore plus bas, il y a le DL107 Delta Air Lines Los Angeles → Pittsburgh à 130$, mais la destination est différente. Sur la liaison Baltimore–San Francisco, 180$ est le meilleur tarif disponible. Souhaitez-vous confirmer le AA103 ?"},
+        {"locuteur": "utilisateur", "message": "D'accord, je le prends.", "intent": "accepter", "slots": {}},
+        {"locuteur": "serveur", "message": "✅ Réservation effectuée ! Vol AA103 Baltimore → San Francisco, 12h00. Bon voyage ! 🌍"}
+      ]
+    },
+
+    {
+      "id": 3,
+      "titre": "Recherche avec compagnie spécifique",
+      "situation": "compréhension",
+      "sous_tache_hta": "1.1 Identifier départ/arrivée → 1.4 Filtrer par compagnie → 1.2 Présenter vols",
+      "langue": "fr",
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Je voudrais un vol Emirates de Dallas à San Francisco.", "intent": "flight", "slots": {"from_city": "Dallas", "to_city": "San Francisco", "airline": "Emirates"}},
+        {"locuteur": "serveur", "message": "Excellente compagnie ! J'ai le vol EK102 Emirates, départ Dallas 22h00, arrivée San Francisco 00h22, direct, à bord d'un Airbus A350. Tarif : 220$. Intéressé ?"},
+        {"locuteur": "utilisateur", "message": "Oui, super ! C'est un vol de nuit alors.", "intent": "demande_details", "slots": {}},
+        {"locuteur": "serveur", "message": "En effet ! Départ à 22h00, durée de vol 2h22, arrivée à minuit passé. Idéal pour voyager confortablement de nuit. L'Airbus A350 offre un excellent confort en cabine. Je confirme la réservation ?"},
+        {"locuteur": "utilisateur", "message": "Oui, c'est parfait.", "intent": "accepter", "slots": {}},
+        {"locuteur": "serveur", "message": "🎉 Votre vol EK102 Emirates Dallas → San Francisco est réservé. Bon vol nocturne ! 🌙✈️"}
+      ]
+    },
+
+    {
+      "id": 4,
+      "titre": "Recherche avec classe de voyage",
+      "situation": "compréhension",
+      "sous_tache_hta": "1.1 Identifier départ/arrivée → 1.5 Filtrer par classe → 1.2 Présenter vols",
+      "langue": "fr",
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Bonjour, je cherche un vol en classe affaires de Paris à New York.", "intent": "flight", "slots": {"from_city": "Paris", "to_city": "New York", "class_type": "affaires"}},
+        {"locuteur": "serveur", "message": "Bonjour ! En classe affaires sur Paris–New York, plusieurs options sont disponibles. La plus populaire : Air France AF, départ CDG, en Boeing 777. Souhaitez-vous que je vous détaille les horaires et tarifs ?"},
+        {"locuteur": "utilisateur", "message": "Oui, quels sont les horaires ?", "intent": "flight_time", "slots": {}},
+        {"locuteur": "serveur", "message": "Pour Paris–New York en business : vols disponibles le matin (départ ~8h00, arrivée ~10h30 heure locale) et en soirée (départ ~21h00, arrivée ~23h45). Le tarif business est autour de 250$. Quelle créneau vous convient ?"},
+        {"locuteur": "utilisateur", "message": "Le vol du matin, s'il vous plaît.", "intent": "accepter", "slots": {"depart_period": "matin"}},
+        {"locuteur": "serveur", "message": "✅ Réservation du vol matinal Paris CDG → New York en classe affaires confirmée. Profitez du service premium ! 🛋️"}
+      ]
+    },
+
+    {
+      "id": 5,
+      "titre": "Parcours aller-retour",
+      "situation": "compréhension",
+      "sous_tache_hta": "1.1 Identifier trajet A/R → 1.2 Présenter vols aller → 1.6 Confirmer retour",
+      "langue": "fr",
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Je cherche un aller-retour de Montreal à Kansas City.", "intent": "flight", "slots": {"from_city": "Montreal", "to_city": "Kansas City", "round_trip": "aller-retour"}},
+        {"locuteur": "serveur", "message": "Pour un aller-retour Montréal–Kansas City, j'ai le vol CO145 de Continental Airlines : départ 10h30, arrivée 13h40, direct, Airbus A350, à 190$. Pour la date de retour, vous partez quand ?"},
+        {"locuteur": "utilisateur", "message": "Je pars le 15 mars et je reviens le 22 mars.", "intent": "flight", "slots": {"depart_date_day_number": 15, "depart_month": "mars", "return_date_day_number": 22, "return_month": "mars"}},
+        {"locuteur": "serveur", "message": "Parfait ! Aller le 15 mars, retour le 22 mars. Tarif total aller-retour : 380$ (2 × 190$). Je confirme les deux réservations ?"},
+        {"locuteur": "utilisateur", "message": "Oui, confirmez !", "intent": "accepter", "slots": {}},
+        {"locuteur": "serveur", "message": "🎉 Aller-retour confirmé ! CO145 Montréal → Kansas City le 15 mars, retour le 22 mars. Bon séjour ! 🌟"}
+      ]
+    },
+
+    {
+      "id": 6,
+      "titre": "Rejet et alternatives multiples — facteur de branchement élevé",
+      "situation": "acceptation",
+      "sous_tache_hta": "1.2 Présenter vols → 1.7 Gérer rejet → 1.8 Proposer alternatives (BF=7)",
+      "langue": "fr",
+      "facteur_branchement": 7,
+      "branches": [
+        "1. Accepter le vol proposé",
+        "2. Demander un vol moins cher",
+        "3. Demander un vol plus tôt",
+        "4. Demander un vol plus tard",
+        "5. Changer la compagnie",
+        "6. Changer la destination",
+        "7. Annuler la recherche"
+      ],
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Je cherche un vol de Los Angeles à Pittsburgh.", "intent": "flight", "slots": {"from_city": "Los Angeles", "to_city": "Pittsburgh"}},
+        {"locuteur": "serveur", "message": "J'ai le DL107 Delta Air Lines, départ 13h00, arrivée 14h54, 1 escale, Airbus A321, à 130$. Que souhaitez-vous faire ?\n1️⃣ Réserver ce vol\n2️⃣ Chercher moins cher\n3️⃣ Départ plus tôt\n4️⃣ Départ plus tard\n5️⃣ Autre compagnie\n6️⃣ Autre destination\n7️⃣ Annuler"},
+        {"locuteur": "utilisateur", "message": "Je préfère un vol plus tôt.", "intent": "flight_time", "slots": {"flight_mod": "le plus tôt"}},
+        {"locuteur": "serveur", "message": "Le vol le plus matinal sur Los Angeles–Pittsburgh est à 07h30 (DL055 Delta, direct, 155$). Souhaitez-vous ce vol ?"},
+        {"locuteur": "utilisateur", "message": "Oui, celui-là !", "intent": "accepter", "slots": {}},
+        {"locuteur": "serveur", "message": "✅ Vol DL055 Los Angeles → Pittsburgh, départ 07h30, réservé. Pensez à arriver à l'aéroport en avance ! ⏰✈️"}
+      ]
+    },
+
+    {
+      "id": 7,
+      "titre": "Recherche par horaire — matin/après-midi/soir",
+      "situation": "compréhension",
+      "sous_tache_hta": "1.1 Identifier période de départ → 1.2 Filtrer par horaire → 1.2 Présenter vols",
+      "langue": "fr",
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Y a-t-il des vols en soirée de Dallas vers San Francisco ?", "intent": "flight_time", "slots": {"from_city": "Dallas", "to_city": "San Francisco", "depart_period": "soir"}},
+        {"locuteur": "serveur", "message": "Oui ! Le EK102 Emirates part à 22h00 de Dallas (DAL) et arrive à San Francisco à 00h22. Vol direct, Airbus A350, 220$. C'est le vol du soir disponible sur cette route. Ça vous intéresse ?"},
+        {"locuteur": "utilisateur", "message": "Oui, parfait pour moi.", "intent": "accepter", "slots": {}},
+        {"locuteur": "serveur", "message": "✅ EK102 Dallas → San Francisco, départ 22h00, confirmé. Bon vol ! 🌙"}
+      ]
+    },
+
+    {
+      "id": 8,
+      "titre": "Incompréhension — Ville non reconnue",
+      "situation": "incompréhension",
+      "sous_tache_hta": "4.1 Détecter entité inconnue → 4.2 Demander clarification → 1.1 Reprendre",
+      "langue": "fr",
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Je veux aller à Frisco.", "intent": "flight", "slots": {"to_city": "?Frisco"}},
+        {"locuteur": "serveur", "message": "Je veux m'assurer de bien comprendre votre demande — par « Frisco », voulez-vous dire San Francisco (SFO) ? 🔍"},
+        {"locuteur": "utilisateur", "message": "Oui, exactement, San Francisco.", "intent": "correction_slot", "slots": {"to_city": "San Francisco"}},
+        {"locuteur": "serveur", "message": "Parfait ! Et vous partez depuis quelle ville ?"},
+        {"locuteur": "utilisateur", "message": "De Dallas.", "intent": "flight", "slots": {"from_city": "Dallas"}},
+        {"locuteur": "serveur", "message": "J'ai le EK102 Emirates, Dallas → San Francisco, direct, départ 22h00, 220$. Ça vous convient ?"},
+        {"locuteur": "utilisateur", "message": "Oui, je réserve.", "intent": "accepter", "slots": {}},
+        {"locuteur": "serveur", "message": "✅ Vol EK102 réservé ! Bon voyage à San Francisco 🌉✈️"}
+      ]
+    },
+
+    {
+      "id": 9,
+      "titre": "Incompréhension — Message ambigu sans destination",
+      "situation": "incompréhension",
+      "sous_tache_hta": "4.1 Détecter slots manquants → 4.3 Relance guidée → 1.1 Reprendre",
+      "langue": "fr",
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Je veux un billet.", "intent": "flight", "slots": {}},
+        {"locuteur": "serveur", "message": "Je serais ravi de vous aider ! Pour trouver votre vol, j'ai besoin de quelques informations : depuis quelle ville partez-vous ?"},
+        {"locuteur": "utilisateur", "message": "De Denver.", "intent": "flight", "slots": {"from_city": "Denver"}},
+        {"locuteur": "serveur", "message": "Et quelle est votre destination ?"},
+        {"locuteur": "utilisateur", "message": "Baltimore.", "intent": "flight", "slots": {"to_city": "Baltimore"}},
+        {"locuteur": "serveur", "message": "J'ai trouvé le vol LH101 Lufthansa, Denver → Baltimore, direct, départ 13h15, arrivée 14h38, Boeing 777, à 130$. Souhaitez-vous réserver ?"},
+        {"locuteur": "utilisateur", "message": "Oui !", "intent": "accepter", "slots": {}},
+        {"locuteur": "serveur", "message": "🎉 Vol LH101 réservé. Bon voyage Denver → Baltimore !"}
+      ]
+    },
+
+    {
+      "id": 10,
+      "titre": "Correction de slot en cours de dialogue",
+      "situation": "correction",
+      "sous_tache_hta": "4.4 Détecter correction → 4.5 Mettre à jour slot → 1.2 Reprendre recherche",
+      "langue": "fr",
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Je cherche un vol de Cincinnati à Houston.", "intent": "flight", "slots": {"from_city": "Cincinnati", "to_city": "Houston"}},
+        {"locuteur": "serveur", "message": "J'ai le UA106 United Airlines, départ 15h00, arrivée 16h25, 1 escale, Boeing 757, 160$. Je confirme ?"},
+        {"locuteur": "utilisateur", "message": "Attendez, je me suis trompé, ce n'est pas Cincinnati mais Chicago.", "intent": "correction_slot", "slots": {"from_city": "Chicago"}},
+        {"locuteur": "serveur", "message": "Pas de souci ! Je mets à jour — vol Chicago → Houston. J'ai le UA202 United Airlines, départ 08h45, arrivée 11h00, direct, Boeing 777, 175$. Ça vous va ?"},
+        {"locuteur": "utilisateur", "message": "Oui, celui-là c'est bien.", "intent": "accepter", "slots": {}},
+        {"locuteur": "serveur", "message": "✅ Vol UA202 Chicago → Houston confirmé. Bon voyage ! ✈️"}
+      ]
+    },
+
+    {
+      "id": 11,
+      "titre": "Hésitation et guidage — facteur de branchement élevé",
+      "situation": "hésitation",
+      "sous_tache_hta": "3.1 Détecter hésitation → 3.2 Guider avec options (BF=6)",
+      "langue": "fr",
+      "facteur_branchement": 6,
+      "branches": [
+        "1. Rechercher par ville de départ",
+        "2. Rechercher par destination",
+        "3. Rechercher par compagnie",
+        "4. Rechercher par budget",
+        "5. Voir les vols populaires",
+        "6. Obtenir de l'aide"
+      ],
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Bonjour, euh... je ne sais pas trop par où commencer.", "intent": "salutation", "slots": {}},
+        {"locuteur": "serveur", "message": "Bonjour ! Pas d'inquiétude, je suis là pour vous guider. 😊 Par où souhaitez-vous commencer ?\n1️⃣ Vous savez d'où vous partez\n2️⃣ Vous avez une destination en tête\n3️⃣ Vous avez une compagnie préférée\n4️⃣ Vous avez un budget\n5️⃣ Voir les vols populaires\n6️⃣ Besoin d'aide générale"},
+        {"locuteur": "utilisateur", "message": "J'ai une destination en tête.", "intent": "flight", "slots": {}},
+        {"locuteur": "serveur", "message": "Super ! Quelle est votre destination ?"},
+        {"locuteur": "utilisateur", "message": "Sydney.", "intent": "flight", "slots": {"to_city": "Sydney"}},
+        {"locuteur": "serveur", "message": "Magnifique destination ! 🌏 Et vous partez depuis quelle ville ?"},
+        {"locuteur": "utilisateur", "message": "De Dallas.", "intent": "flight", "slots": {"from_city": "Dallas"}},
+        {"locuteur": "serveur", "message": "J'ai le LH135 Lufthansa Dallas → Sydney, direct, départ 05h30, durée 4h29, Boeing 737, 290$. Souhaitez-vous ce vol ?"},
+        {"locuteur": "utilisateur", "message": "C'est un peu cher... vous avez moins ?", "intent": "airfare", "slots": {"cost_relative": "prix_bas"}},
+        {"locuteur": "serveur", "message": "C'est le meilleur tarif disponible sur Dallas–Sydney. Je peux élargir aux villes proches. Voulez-vous que je cherche depuis Houston ou San Antonio ?"},
+        {"locuteur": "utilisateur", "message": "Non, ça va, je prends le LH135.", "intent": "accepter", "slots": {}},
+        {"locuteur": "serveur", "message": "✅ LH135 Dallas → Sydney confirmé ! Quelle aventure ! 🦘🌟"}
+      ]
+    },
+
+    {
+      "id": 12,
+      "titre": "Demande de détails sur le vol",
+      "situation": "compréhension",
+      "sous_tache_hta": "1.2 Présenter vol → 1.9 Fournir détails complets",
+      "langue": "fr",
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Bonjour, donnez-moi tous les détails sur les vols Buenos Aires–Montréal.", "intent": "demande_details", "slots": {"from_city": "Buenos Aires", "to_city": "Montreal"}},
+        {"locuteur": "serveur", "message": "Bien sûr ! Vol EK241 Emirates, Buenos Aires (EZE) → Montréal (YUL) : départ 05h15, arrivée 07h07, direct, Boeing 757, durée 1h52, prix 200$. Souhaitez-vous réserver ?"},
+        {"locuteur": "utilisateur", "message": "C'est bien le Boeing 757 ? Quelle capacité ?", "intent": "aircraft", "slots": {"appareil": "Boeing 757"}},
+        {"locuteur": "serveur", "message": "Le Boeing 757 peut accueillir entre 200 et 295 passagers selon la configuration. C'est un appareil moyen-courrier très fiable, confortable pour des trajets de moins de 3h. Vous avez d'autres questions ?"},
+        {"locuteur": "utilisateur", "message": "Non, c'est parfait. Je réserve.", "intent": "accepter", "slots": {}},
+        {"locuteur": "serveur", "message": "🎉 Vol EK241 Buenos Aires → Montréal confirmé ! Bon voyage au Canada ! 🍁✈️"}
+      ]
+    },
+
+    {
+      "id": 13,
+      "titre": "Recherche vol direct vs avec escale",
+      "situation": "compréhension",
+      "sous_tache_hta": "1.1 Identifier trajet → 1.4 Filtrer direct/escale → 1.2 Présenter vols",
+      "langue": "fr",
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Je veux absolument un vol direct de Johannesburg à Denver.", "intent": "flight", "slots": {"from_city": "Johannesburg", "to_city": "Denver", "flight_stop": "direct"}},
+        {"locuteur": "serveur", "message": "J'ai exactement ce qu'il vous faut ! Le EK237 Emirates, Johannesburg → Denver, direct, départ 09h00, arrivée 13h40, Airbus A320, à 300$. C'est le vol long-courrier premium sur cette route. Je confirme ?"},
+        {"locuteur": "utilisateur", "message": "300$, c'est dans mon budget. Je prends.", "intent": "accepter", "slots": {}},
+        {"locuteur": "serveur", "message": "✅ EK237 Johannesburg → Denver, direct, 09h00, réservé. Un vol de 4h40 tout confort. Bon voyage ! ✈️🌍"}
+      ]
+    },
+
+    {
+      "id": 14,
+      "titre": "Recherche avec plusieurs passagers",
+      "situation": "compréhension",
+      "sous_tache_hta": "1.1 Identifier trajet + nb passagers → 1.2 Présenter vols",
+      "langue": "fr",
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Bonjour, je cherche 2 billets de Mexico City à Baltimore.", "intent": "flight", "slots": {"from_city": "Mexico City", "to_city": "Baltimore", "passenger_count": 2}},
+        {"locuteur": "serveur", "message": "Bonjour ! Pour 2 passagers sur Mexico City–Baltimore, j'ai le UA317 United Airlines, départ 13h15, arrivée 17h34, direct, Boeing 757. Tarif unitaire : 240$ → Total pour 2 : 480$. Ça vous convient ?"},
+        {"locuteur": "utilisateur", "message": "480$ pour deux, c'est correct. Je réserve.", "intent": "accepter", "slots": {}},
+        {"locuteur": "serveur", "message": "🎉 2 billets UA317 Mexico City → Baltimore confirmés ! Bon voyage à vous deux ! 👥✈️"}
+      ]
+    },
+
+    {
+      "id": 15,
+      "titre": "Hors sujet — Recentrage",
+      "situation": "incompréhension",
+      "sous_tache_hta": "4.2 Détecter hors-sujet → 4.6 Recentrer sur les vols",
+      "langue": "fr",
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Bonjour !", "intent": "salutation", "slots": {}},
+        {"locuteur": "serveur", "message": "Bonjour ! VoyageAssistant à votre service. ✈️ Comment puis-je vous aider ?"},
+        {"locuteur": "utilisateur", "message": "Pouvez-vous me réserver un hôtel à Paris ?", "intent": "out_of_scope", "slots": {}},
+        {"locuteur": "serveur", "message": "Je suis spécialisé uniquement dans la réservation de vols, je ne peux malheureusement pas gérer les hôtels. Mais je peux vous trouver le meilleur vol vers Paris ! Vous souhaitez voyager vers Paris ?"},
+        {"locuteur": "utilisateur", "message": "Ah oui, bonne idée. De Londres.", "intent": "flight", "slots": {"from_city": "London", "to_city": "Paris"}},
+        {"locuteur": "serveur", "message": "Parfait ! Vol British Airways BA Londres (LHR) → Paris (CDG), disponible toute la journée. Tarif dès 120$. Quelle heure vous conviendrait ?"},
+        {"locuteur": "utilisateur", "message": "Le matin de préférence.", "intent": "flight_time", "slots": {"depart_period": "matin"}},
+        {"locuteur": "serveur", "message": "Vol BA matinal Londres → Paris, départ 08h00, arrivée 10h15, 120$. Je réserve ?"},
+        {"locuteur": "utilisateur", "message": "Oui, parfait.", "intent": "accepter", "slots": {}},
+        {"locuteur": "serveur", "message": "✅ Vol BA Londres → Paris, 08h00, confirmé. Bienvenue à Paris ! 🗼✈️"}
+      ]
+    },
+
+    {
+      "id": 16,
+      "titre": "Dialogue multilingue — Anglais",
+      "situation": "compréhension",
+      "sous_tache_hta": "1.1 Identify departure/arrival → 1.2 Present flights",
+      "langue": "en",
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Hi! I need a flight from Oakland to Dallas.", "intent": "flight", "slots": {"from_city": "Oakland", "to_city": "Dallas"}},
+        {"locuteur": "serveur", "message": "Hello! Great news! I found US113 by US Airways: Oakland (OAK) → Dallas (DAL), direct, departure 15:45, arrival 18:21, Boeing 787, $170. Shall I book it?"},
+        {"locuteur": "utilisateur", "message": "Yes, book it please!", "intent": "accepter", "slots": {}},
+        {"locuteur": "serveur", "message": "✅ Flight US113 Oakland → Dallas booked! Have a wonderful trip! ✈️"}
+      ]
+    },
+
+    {
+      "id": 17,
+      "titre": "Dialogue multilingue — Chinois",
+      "situation": "compréhension",
+      "sous_tache_hta": "1.1 识别出发/到达城市 → 1.2 展示航班",
+      "langue": "zh",
+      "tours": [
+        {"locuteur": "utilisateur", "message": "你好！我想从迪拜飞达拉斯。", "intent": "flight", "slots": {"from_city": "Dubai", "to_city": "Dallas Fort Worth"}},
+        {"locuteur": "serveur", "message": "您好！我为您找到了CO215大陆航空，迪拜(DXB)→达拉斯沃斯堡(DFW)，直飞，05:00出发，08:53到达，空客A321，票价220美元。请问需要预订吗？"},
+        {"locuteur": "utilisateur", "message": "好的，帮我预订吧。", "intent": "accepter", "slots": {}},
+        {"locuteur": "serveur", "message": "✅ CO215迪拜→达拉斯沃斯堡已预订成功！祝您旅途愉快！✈️🌟"}
+      ]
+    },
+
+    {
+      "id": 18,
+      "titre": "Dialogue complet long — Parcours complexe avec BF élevé",
+      "situation": "compréhension",
+      "sous_tache_hta": "Parcours complet : salutation → critères multiples → présentation → hésitation → alternatives → confirmation",
+      "langue": "fr",
+      "facteur_branchement": 8,
+      "branches": [
+        "1. Accepter la première proposition",
+        "2. Demander un vol moins cher",
+        "3. Demander un vol direct uniquement",
+        "4. Changer la date",
+        "5. Changer la compagnie",
+        "6. Changer la classe",
+        "7. Voir plus d'options",
+        "8. Annuler"
+      ],
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Bonjour VoyageAssistant !", "intent": "salutation", "slots": {}},
+        {"locuteur": "serveur", "message": "Bonjour ! ✈️ Prêt à décoller ? Dites-moi où vous souhaitez aller !"},
+        {"locuteur": "utilisateur", "message": "Je cherche un vol aller-retour de San Francisco à Tokyo en économique, la semaine prochaine.", "intent": "flight", "slots": {"from_city": "San Francisco", "to_city": "Tokyo", "round_trip": "aller-retour", "class_type": "économique", "depart_date_relative": "la semaine prochaine"}},
+        {"locuteur": "serveur", "message": "Super demande ! Pour San Francisco → Tokyo en économique la semaine prochaine, j'ai plusieurs options. Que souhaitez-vous prioritairement ?\n1️⃣ Accepter le meilleur rapport qualité/prix\n2️⃣ Le moins cher possible\n3️⃣ Uniquement vols directs\n4️⃣ Changer les dates\n5️⃣ Choisir la compagnie\n6️⃣ Passer en business\n7️⃣ Voir toutes les options\n8️⃣ Annuler"},
+        {"locuteur": "utilisateur", "message": "Le moins cher possible.", "intent": "airfare", "slots": {"cost_relative": "prix_bas"}},
+        {"locuteur": "serveur", "message": "Le tarif le plus bas disponible sur San Francisco–Tokyo : Japan Airlines JL, économique, à partir de 210$. Départ en milieu de semaine (mercredi ou jeudi), durée ~11h. Je vous propose le vol du mercredi à 11h45. Ça vous convient ?"},
+        {"locuteur": "utilisateur", "message": "Et pour le retour, le 22 ?", "intent": "flight", "slots": {"return_date_day_number": 22}},
+        {"locuteur": "serveur", "message": "Retour Tokyo → San Francisco le 22 : vol JL disponible à 14h30, arrivée San Francisco le même jour à 08h15 (décalage horaire). Prix retour : 210$. Total aller-retour : 420$. Je confirme ?"},
+        {"locuteur": "utilisateur", "message": "Oui, c'est parfait ! Je confirme.", "intent": "accepter", "slots": {}},
+        {"locuteur": "serveur", "message": "🎉 Aller-retour San Francisco ↔ Tokyo confirmé ! Aller mercredi, retour le 22. Total : 420$. Quelle aventure vous attend ! 🗼🌸✈️"}
+      ]
+    },
+
+    {
+      "id": 19,
+      "titre": "Demande de transport terrestre",
+      "situation": "compréhension",
+      "sous_tache_hta": "2.1 Identifier demande transport au sol → 2.2 Fournir information",
+      "langue": "fr",
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Comment rejoindre le centre-ville de San Francisco depuis l'aéroport ?", "intent": "ground_service", "slots": {"city_name": "San Francisco"}},
+        {"locuteur": "serveur", "message": "Depuis l'aéroport SFO, plusieurs options s'offrent à vous : le BART (métro), rapide et économique (~$10, 30 min), les navettes (SuperShuttle ~$20), ou un taxi/Uber (~$35-50). Je vous conseille le BART pour rapidité et coût. Souhaitez-vous autre chose ?"},
+        {"locuteur": "utilisateur", "message": "Merci, c'est très utile. Au revoir !", "intent": "au_revoir", "slots": {}},
+        {"locuteur": "serveur", "message": "Avec plaisir ! Bon voyage à San Francisco ! N'hésitez pas à revenir pour vos prochains vols. 🌉 À bientôt ! 👋"}
+      ]
+    },
+
+    {
+      "id": 20,
+      "titre": "Demande de répétition et clarification",
+      "situation": "incompréhension",
+      "sous_tache_hta": "4.7 Détecter demande clarification → 4.8 Reformuler → 1.2 Continuer",
+      "langue": "fr",
+      "tours": [
+        {"locuteur": "utilisateur", "message": "Je veux le vol le plus rapide de Philadelphie à Kansas City.", "intent": "flight", "slots": {"from_city": "Philadelphia", "to_city": "Kansas City", "flight_mod": "le plus rapide"}},
+        {"locuteur": "serveur", "message": "Le vol le plus rapide sur Philadelphie–Kansas City est le EK380 Emirates : départ 12h30, arrivée 14h10, direct, Boeing 777, 1h40 de vol, à 140$. Souhaitez-vous réserver ?"},
+        {"locuteur": "utilisateur", "message": "Pouvez-vous répéter les horaires ?", "intent": "demande_clarification", "slots": {}},
+        {"locuteur": "serveur", "message": "Bien sûr ! EK380 Emirates : ✈️ Départ Philadelphia 12h30 → Arrivée Kansas City 14h10. Durée totale : 1h40. Vol direct. Boeing 777. Tarif : 140$. C'est plus clair ?"},
+        {"locuteur": "utilisateur", "message": "Oui merci ! Je réserve.", "intent": "accepter", "slots": {}},
+        {"locuteur": "serveur", "message": "✅ EK380 Philadelphia → Kansas City, 12h30, confirmé. Bon vol ! ⚡✈️"}
+      ]
+    }
+  ],
+
+  "arborescence_unites_dialogue": {
+    "_description": "Arborescence des unités de dialogue de type Intent/Slots, dérivée des 20 dialogues ci-dessus",
+    "racine": {
+      "nom": "VoyageAssistant",
+      "type": "root",
+      "enfants": [
+        {
+          "nom": "SALUTATION",
+          "type": "intent",
+          "slots": [],
+          "situation": "ouverture",
+          "transitions": ["RECHERCHE_VOL", "GUIDE_UTILISATEUR", "AU_REVOIR"]
+        },
+        {
+          "nom": "RECHERCHE_VOL",
+          "type": "intent",
+          "slots_obligatoires": ["from_city", "to_city"],
+          "slots_optionnels": ["depart_day", "depart_period", "depart_date_relative", "depart_date_day_number", "depart_month", "airline", "class_type", "round_trip", "flight_stop", "passenger_count"],
+          "situation": "compréhension",
+          "facteur_branchement": 8,
+          "branches": [
+            "ACCEPTER_VOL",
+            "DEMANDE_PRIX",
+            "DEMANDE_HORAIRE",
+            "DEMANDE_DETAILS",
+            "CHANGER_COMPAGNIE",
+            "CHANGER_CLASSE",
+            "VOIR_ALTERNATIVES",
+            "ANNULER"
+          ],
+          "enfants": [
+            {
+              "nom": "ACCEPTER_VOL",
+              "type": "intent",
+              "slots": [],
+              "situation": "acceptation",
+              "transitions": ["CONFIRMATION_RESERVATION", "AU_REVOIR"]
+            },
+            {
+              "nom": "DEMANDE_PRIX",
+              "type": "intent",
+              "slots_optionnels": ["cost_relative", "fare_amount"],
+              "situation": "compréhension",
+              "transitions": ["ACCEPTER_VOL", "VOIR_ALTERNATIVES", "ANNULER"]
+            },
+            {
+              "nom": "DEMANDE_HORAIRE",
+              "type": "intent",
+              "slots_optionnels": ["depart_period", "depart_time", "depart_day", "flight_mod"],
+              "situation": "compréhension",
+              "transitions": ["ACCEPTER_VOL", "DEMANDE_DETAILS", "VOIR_ALTERNATIVES"]
+            },
+            {
+              "nom": "DEMANDE_DETAILS",
+              "type": "intent",
+              "slots": [],
+              "situation": "compréhension",
+              "sous_informations": ["aircraft", "airline", "stops", "duration", "price"],
+              "transitions": ["ACCEPTER_VOL", "VOIR_ALTERNATIVES", "ANNULER"]
+            },
+            {
+              "nom": "VOIR_ALTERNATIVES",
+              "type": "intent",
+              "slots_optionnels": ["airline", "depart_day", "flight_stop", "class_type"],
+              "situation": "acceptation",
+              "facteur_branchement": 7,
+              "branches": [
+                "ACCEPTER_VOL",
+                "DEMANDE_PRIX",
+                "DEMANDE_HORAIRE",
+                "CHANGER_COMPAGNIE",
+                "CHANGER_CLASSE",
+                "CHANGER_DESTINATION",
+                "ANNULER"
+              ],
+              "transitions": ["ACCEPTER_VOL", "ANNULER"]
+            }
+          ]
+        },
+        {
+          "nom": "DEMANDE_TARIF",
+          "type": "intent",
+          "slots_obligatoires": ["from_city", "to_city"],
+          "slots_optionnels": ["cost_relative", "fare_amount", "class_type"],
+          "situation": "compréhension",
+          "transitions": ["ACCEPTER_VOL", "VOIR_ALTERNATIVES", "RECHERCHE_VOL"]
+        },
+        {
+          "nom": "GUIDE_UTILISATEUR",
+          "type": "intent",
+          "slots": [],
+          "situation": "hésitation",
+          "facteur_branchement": 6,
+          "branches": [
+            "RECHERCHE_PAR_DEPART",
+            "RECHERCHE_PAR_DESTINATION",
+            "RECHERCHE_PAR_COMPAGNIE",
+            "RECHERCHE_PAR_BUDGET",
+            "VOLS_POPULAIRES",
+            "AIDE_GENERALE"
+          ],
+          "transitions": ["RECHERCHE_VOL", "DEMANDE_TARIF"]
+        },
+        {
+          "nom": "CORRECTION_SLOT",
+          "type": "intent",
+          "slots_modifies": ["from_city", "to_city", "depart_day", "class_type", "flight_stop", "airline"],
+          "situation": "correction",
+          "transitions": ["RECHERCHE_VOL", "ACCEPTER_VOL"]
+        },
+        {
+          "nom": "DEMANDE_CLARIFICATION",
+          "type": "intent",
+          "slots": [],
+          "situation": "incompréhension",
+          "transitions": ["RECHERCHE_VOL", "ACCEPTER_VOL", "DEMANDE_DETAILS"]
+        },
+        {
+          "nom": "TRANSPORT_TERRESTRE",
+          "type": "intent",
+          "slots_obligatoires": ["city_name"],
+          "situation": "compréhension",
+          "transitions": ["AU_REVOIR", "RECHERCHE_VOL"]
+        },
+        {
+          "nom": "HORS_SUJET",
+          "type": "intent",
+          "slots": [],
+          "situation": "incompréhension",
+          "transitions": ["RECHERCHE_VOL", "AU_REVOIR"]
+        },
+        {
+          "nom": "CONFIRMATION_RESERVATION",
+          "type": "intent",
+          "slots_remplis": ["from_city", "to_city", "flight_id", "airline", "depart_time", "price"],
+          "situation": "acceptation",
+          "transitions": ["AU_REVOIR", "RECHERCHE_VOL"]
+        },
+        {
+          "nom": "AU_REVOIR",
+          "type": "intent",
+          "slots": [],
+          "situation": "clôture",
+          "transitions": []
+        }
+      ]
+    }
+  },
+
+  "statistiques": {
+    "nb_dialogues_total": 20,
+    "repartition_situations": {
+      "compréhension": 11,
+      "acceptation": 3,
+      "incompréhension": 4,
+      "correction": 1,
+      "hésitation": 1
+    },
+    "repartition_langues": {
+      "fr": 17,
+      "en": 1,
+      "zh": 1,
+      "mixte": 1
+    },
+    "dialogues_avec_BF_eleve": [
+      {"id": 6, "titre": "Rejet et alternatives multiples", "BF": 7},
+      {"id": 11, "titre": "Hésitation et guidage", "BF": 6},
+      {"id": 18, "titre": "Parcours complexe", "BF": 8}
+    ],
+    "sous_taches_hta_couvertes": [
+      "1.1 Identification départ/arrivée",
+      "1.2 Présentation des vols",
+      "1.3 Filtrage par prix",
+      "1.4 Filtrage par compagnie",
+      "1.5 Filtrage par classe",
+      "1.6 Confirmation retour (aller-retour)",
+      "1.7 Gestion du rejet",
+      "1.8 Alternatives multiples",
+      "1.9 Détails complets",
+      "2.1 Transport terrestre",
+      "3.1 Détection hésitation",
+      "3.2 Guidage utilisateur",
+      "4.1 Détection entité inconnue",
+      "4.2 Détection hors-sujet",
+      "4.3 Relance guidée",
+      "4.4 Détection correction",
+      "4.5 Mise à jour slot",
+      "4.7 Demande clarification"
+    ]
+  }
+}
